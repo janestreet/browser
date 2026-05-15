@@ -1,0 +1,6 @@
+(library
+ (name private_browser_bindings_shared)
+ (public_name browser.shared)
+ (libraries browser_js_types gen_js_api js_of_ocaml promise_jsoo)
+ (preprocess
+  (pps js_of_ocaml-ppx)))

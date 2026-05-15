@@ -1,5 +1,7 @@
 module Js = Js_of_ocaml.Js
 
+type (+'a, 'b) unsafe
+
 class type js_array_class = object
   method isArray : 'a Js.t -> bool Js.t Js.meth
 end
