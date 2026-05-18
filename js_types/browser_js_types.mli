@@ -1,5 +1,12 @@
 module Js = Js_of_ocaml.Js
 
+(** [unsafe] is used to mark some member of a class as unsafe. It can only be accessed by
+    using [ppx_browser], which performs runtime checks to ensure that we are in the
+    correct context.
+
+    See [lib/browser/ppx/ppx_browser.mli] to learn more *)
+type (+'a, 'b) unsafe
+
 class type js_array_class = object
   method isArray : 'a Js.t -> bool Js.t Js.meth
 end

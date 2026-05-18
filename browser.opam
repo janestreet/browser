@@ -13,10 +13,12 @@ build: [
 depends: [
   "ocaml" {>= "5.1.0"}
   "dune"            {>= "3.17.0"}
+  "gen_js_api"      {= "1.1.2+ox"}
   "js_of_ocaml"     {= "6.0.1+ox"}
   "js_of_ocaml-ppx" {= "6.0.1+ox"}
+  "promise_jsoo"    {= "0.4.3"}
 ]
-available: arch != "arm32" & arch != "x86_32"
+available: arch != "x86_32"
 synopsis: "A library containing bindings to web APIs"
 description: "
 Browser contains bindings to web APIs. The bindings are generated from Chromium's WebIDL files
