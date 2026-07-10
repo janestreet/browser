@@ -6,6 +6,15 @@ open! Interfaces
 (* see {!Browser.Css} for module definition *)
 class type css = object
   method highlights : highlight_registry Js.t Js.readonly_prop
+
+  (** [paintWorklet] is unsafe and is only available in [Secure] contexts. In order to
+      access [paintWorklet], you must use [ppx_browser]. *)
+  method paintWorklet :
+    ( (* unresolved Worklet *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _Hz : value:Js.number Js.t -> css_unit_value Js.t Js.meth
   method _Q : value:Js.number Js.t -> css_unit_value Js.t Js.meth
   method cap : value:Js.number Js.t -> css_unit_value Js.t Js.meth

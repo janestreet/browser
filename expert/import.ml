@@ -1,5 +1,6 @@
 module Js = Js_of_ocaml.Js
 module Types = Browser_types
+module Context = Browser_manually_written_bindings.Context
 
 let am_running_test =
   try

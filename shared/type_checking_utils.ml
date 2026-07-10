@@ -83,23 +83,7 @@ let is_record (x : 'a Js.t) ~(value_type_checkers : ('b Js.t -> bool) list) =
   | true -> List.exists (check_all_object_values x) value_type_checkers
 ;;
 
-let return_false () = false
 let constructor = Js.string "constructor"
-
-let is_instance_of
-  ~get_class_obj_from_global
-  ~(type_ : string)
-  ~global
-  (class_instance : 'a Js.t)
-  : bool
-  =
-  let class_instance_constructor = get_class_obj_from_global ~global type_ in
-  Js.Optdef.case
-    class_instance_constructor
-    return_false
-    (fun class_instance_constructor ->
-       Js.instanceof class_instance class_instance_constructor)
-;;
 
 let is_exact_instance_of
   ~get_class_obj_from_global

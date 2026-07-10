@@ -58,6 +58,21 @@ and css_style_sheet_init = object ('self)
   method media : media_list_or_string Js.t Js.optdef Js.prop
 end
 
+(* see {!Browser.Canvas_context_creation_attributes_module} for module definition *)
+and canvas_context_creation_attributes_module = object ('self)
+  method alpha : bool Js.t Js.optdef Js.prop
+  method antialias : bool Js.t Js.optdef Js.prop
+  method colorSpace : predefined_color_space Js.optdef Js.prop
+  method depth : bool Js.t Js.optdef Js.prop
+  method desynchronized : bool Js.t Js.optdef Js.prop
+  method failIfMajorPerformanceCaveat : bool Js.t Js.optdef Js.prop
+  method powerPreference : canvas_power_preference Js.optdef Js.prop
+  method premultipliedAlpha : bool Js.t Js.optdef Js.prop
+  method preserveDrawingBuffer : bool Js.t Js.optdef Js.prop
+  method stencil : bool Js.t Js.optdef Js.prop
+  method willReadFrequently : canvas_will_read_frequently Js.optdef Js.prop
+end
+
 (* see {!Browser.Canvas_rendering_context2d} for module definition *)
 and canvas_rendering_context2d_settings = object ('self)
   method alpha : bool Js.t Js.optdef Js.prop
@@ -84,6 +99,50 @@ and close_event_init = object ('self)
   method code : Js.number Js.t Js.optdef Js.prop
   method reason : Js.js_string Js.t Js.optdef Js.prop
   method wasClean : bool Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Constrain_boolean_parameters} for module definition *)
+and constrain_boolean_parameters = object ('self)
+  method exact : bool Js.t Js.optdef Js.prop
+  method ideal : bool Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Constrain_dom_string_parameters} for module definition *)
+and constrain_dom_string_parameters = object ('self)
+  method exact : string_array_or_string Js.t Js.optdef Js.prop
+  method ideal : string_array_or_string Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Double_range} for module definition *)
+and double_range = object ('self)
+  method max : Js.number Js.t Js.optdef Js.prop
+  method min : Js.number Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Constrain_double_range} for module definition *)
+and constrain_double_range = object ('self)
+  inherit double_range
+  method exact : Js.number Js.t Js.optdef Js.prop
+  method ideal : Js.number Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Long_range} for module definition *)
+and long_range = object ('self)
+  method max : Js.number Js.t Js.optdef Js.prop
+  method min : Js.number Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Constrain_long_range} for module definition *)
+and constrain_long_range = object ('self)
+  inherit long_range
+  method exact : Js.number Js.t Js.optdef Js.prop
+  method ideal : Js.number Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Constrain_point2d_parameters} for module definition *)
+and constrain_point2d_parameters = object ('self)
+  method exact : point2d Js.t Js.js_array Js.t Js.optdef Js.prop
+  method ideal : point2d Js.t Js.js_array Js.t Js.optdef Js.prop
 end
 
 (* see {!Browser.Custom_event} for module definition *)
@@ -339,6 +398,92 @@ and keyframe_animation_options = object ('self)
     untranslated Js.opt Js.optdef Js.prop
 end
 
+(* see {!Browser.Midi_options} for module definition *)
+and midi_options = object ('self)
+  method sysex : bool Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Media_key_system_configuration} for module definition *)
+and media_key_system_configuration = object ('self)
+  method audioCapabilities :
+    media_key_system_media_capability Js.t Js.js_array Js.t Js.optdef Js.prop
+
+  method distinctiveIdentifier : media_keys_requirement Js.optdef Js.prop
+  method initDataTypes : Js.js_string Js.t Js.js_array Js.t Js.optdef Js.prop
+  method label : Js.js_string Js.t Js.optdef Js.prop
+  method persistentState : media_keys_requirement Js.optdef Js.prop
+  method sessionTypes : Js.js_string Js.t Js.js_array Js.t Js.optdef Js.prop
+
+  method videoCapabilities :
+    media_key_system_media_capability Js.t Js.js_array Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Media_key_system_configuration} for module definition *)
+and media_key_system_media_capability = object ('self)
+  method contentType : Js.js_string Js.t Js.optdef Js.prop
+  method encryptionScheme : Js.js_string Js.t Js.opt Js.optdef Js.prop
+  method robustness : Js.js_string Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Media_stream_constraints} for module definition *)
+and media_stream_constraints = object ('self)
+  method audio : media_track_constraints_or_bool Js.t Js.optdef Js.prop
+  method controller : (* unresolved CaptureController *) untranslated Js.optdef Js.prop
+  method monitorTypeSurfaces : display_media_include_or_exclude Js.optdef Js.prop
+  method preferCurrentTab : bool Js.t Js.optdef Js.prop
+  method selfBrowserSurface : display_media_include_or_exclude Js.optdef Js.prop
+  method surfaceSwitching : display_media_include_or_exclude Js.optdef Js.prop
+  method systemAudio : display_media_include_or_exclude Js.optdef Js.prop
+  method video : media_track_constraints_or_bool Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Media_track_constraint_set} for module definition *)
+and media_track_constraint_set = object ('self)
+  method _optional : Js.Unsafe.any Js.js_array Js.t Js.optdef Js.prop
+  method aspectRatio : constrain_double Js.t Js.optdef Js.prop
+  method autoGainControl : constrain_boolean Js.t Js.optdef Js.prop
+  method brightness : constrain_double Js.t Js.optdef Js.prop
+  method channelCount : constrain_long Js.t Js.optdef Js.prop
+  method colorTemperature : constrain_double Js.t Js.optdef Js.prop
+  method contrast : constrain_double Js.t Js.optdef Js.prop
+  method deviceId : constrain_dom_string Js.t Js.optdef Js.prop
+  method displaySurface : constrain_dom_string Js.t Js.optdef Js.prop
+  method echoCancellation : constrain_boolean Js.t Js.optdef Js.prop
+  method exposureCompensation : constrain_double Js.t Js.optdef Js.prop
+  method exposureMode : constrain_dom_string Js.t Js.optdef Js.prop
+  method exposureTime : constrain_double Js.t Js.optdef Js.prop
+  method facingMode : constrain_dom_string Js.t Js.optdef Js.prop
+  method focusDistance : constrain_double Js.t Js.optdef Js.prop
+  method focusMode : constrain_dom_string Js.t Js.optdef Js.prop
+  method frameRate : constrain_double Js.t Js.optdef Js.prop
+  method groupId : constrain_dom_string Js.t Js.optdef Js.prop
+  method height : constrain_long Js.t Js.optdef Js.prop
+  method iso : constrain_double Js.t Js.optdef Js.prop
+  method latency : constrain_double Js.t Js.optdef Js.prop
+  method mandatory : Js.Unsafe.any Js.optdef Js.prop
+  method noiseSuppression : constrain_boolean Js.t Js.optdef Js.prop
+  method pan : constrain_double_or_bool Js.t Js.optdef Js.prop
+  method pointsOfInterest : constrain_point2d Js.t Js.optdef Js.prop
+  method resizeMode : constrain_dom_string Js.t Js.optdef Js.prop
+  method sampleRate : constrain_long Js.t Js.optdef Js.prop
+  method sampleSize : constrain_long Js.t Js.optdef Js.prop
+  method saturation : constrain_double Js.t Js.optdef Js.prop
+  method sharpness : constrain_double Js.t Js.optdef Js.prop
+  method suppressLocalAudioPlayback : constrain_boolean Js.t Js.optdef Js.prop
+  method tilt : constrain_double_or_bool Js.t Js.optdef Js.prop
+  method torch : constrain_boolean Js.t Js.optdef Js.prop
+  method voiceIsolation : constrain_boolean Js.t Js.optdef Js.prop
+  method whiteBalanceMode : constrain_dom_string Js.t Js.optdef Js.prop
+  method width : constrain_long Js.t Js.optdef Js.prop
+  method zoom : constrain_double_or_bool Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Media_track_constraints} for module definition *)
+and media_track_constraints = object ('self)
+  inherit media_track_constraint_set
+  method advanced : media_track_constraint_set Js.t Js.js_array Js.t Js.optdef Js.prop
+end
+
 (* see {!Browser.Message_event} for module definition *)
 and message_event_init = object ('self)
   inherit event_init
@@ -433,6 +578,12 @@ and performance_observer_init = object ('self)
   method entryTypes : Js.js_string Js.t Js.js_array Js.t Js.optdef Js.prop
   method includeSoftNavigationObservations : bool Js.t Js.optdef Js.prop
   method type_ : Js.js_string Js.t Js.optdef Js.prop
+end
+
+(* see {!Browser.Point2d} for module definition *)
+and point2d = object ('self)
+  method x : Js.number Js.t Js.optdef Js.prop
+  method y : Js.number Js.t Js.optdef Js.prop
 end
 
 (* see {!Browser.Pointer_event} for module definition *)
@@ -1117,12 +1268,13 @@ and canvas_rendering_context2d = object
     -> height:Js.number Js.t
     -> unit Js.meth
 
-  method clip :
+  method clip : winding:canvas_fill_rule Js.optdef -> unit Js.meth
+
+  method clip_1 :
     path:(* unresolved Path2D *) untranslated
     -> winding:canvas_fill_rule Js.optdef
     -> unit Js.meth
 
-  method clip_1 : winding:canvas_fill_rule Js.optdef -> unit Js.meth
   method closePath : unit Js.meth
 
   method createConicGradient :
@@ -1131,16 +1283,16 @@ and canvas_rendering_context2d = object
     -> cy:Js.number Js.t
     -> canvas_gradient Js.t Js.meth
 
-  method createImageData :
-    sw:Js.number Js.t
-    -> sh:Js.number Js.t
-    -> imageDataSettings:image_data_settings Js.t
-    -> image_data Js.t Js.meth
+  method createImageData : imagedata:image_data Js.t -> image_data Js.t Js.meth
 
   method createImageData_1 :
     sw:Js.number Js.t -> sh:Js.number Js.t -> image_data Js.t Js.meth
 
-  method createImageData_2 : imagedata:image_data Js.t -> image_data Js.t Js.meth
+  method createImageData_2 :
+    sw:Js.number Js.t
+    -> sh:Js.number Js.t
+    -> imageDataSettings:image_data_settings Js.t
+    -> image_data Js.t Js.meth
 
   method createLinearGradient :
     x0:Js.number Js.t
@@ -1163,22 +1315,13 @@ and canvas_rendering_context2d = object
     -> r1:Js.number Js.t
     -> canvas_gradient Js.t Js.meth
 
-  method drawFocusIfNeeded :
+  method drawFocusIfNeeded : element:element Js.t -> unit Js.meth
+
+  method drawFocusIfNeeded_1 :
     path:(* unresolved Path2D *) untranslated -> element:element Js.t -> unit Js.meth
 
-  method drawFocusIfNeeded_1 : element:element Js.t -> unit Js.meth
-
   method drawImage :
-    image:canvas_image_source Js.t
-    -> sx:Js.number Js.t
-    -> sy:Js.number Js.t
-    -> sw:Js.number Js.t
-    -> sh:Js.number Js.t
-    -> dx:Js.number Js.t
-    -> dy:Js.number Js.t
-    -> dw:Js.number Js.t
-    -> dh:Js.number Js.t
-    -> unit Js.meth
+    image:canvas_image_source Js.t -> x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
 
   method drawImage_1 :
     image:canvas_image_source Js.t
@@ -1189,7 +1332,16 @@ and canvas_rendering_context2d = object
     -> unit Js.meth
 
   method drawImage_2 :
-    image:canvas_image_source Js.t -> x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
+    image:canvas_image_source Js.t
+    -> sx:Js.number Js.t
+    -> sy:Js.number Js.t
+    -> sw:Js.number Js.t
+    -> sh:Js.number Js.t
+    -> dx:Js.number Js.t
+    -> dy:Js.number Js.t
+    -> dw:Js.number Js.t
+    -> dh:Js.number Js.t
+    -> unit Js.meth
 
   method ellipse :
     x:Js.number Js.t
@@ -1202,12 +1354,12 @@ and canvas_rendering_context2d = object
     -> anticlockwise:bool Js.t Js.optdef
     -> unit Js.meth
 
-  method fill :
+  method fill : winding:canvas_fill_rule Js.optdef -> unit Js.meth
+
+  method fill_1 :
     path:(* unresolved Path2D *) untranslated
     -> winding:canvas_fill_rule Js.optdef
     -> unit Js.meth
-
-  method fill_1 : winding:canvas_fill_rule Js.optdef -> unit Js.meth
 
   method fillRect :
     x:Js.number Js.t
@@ -1230,7 +1382,6 @@ and canvas_rendering_context2d = object
     -> sy:Js.number Js.t
     -> sw:Js.number Js.t
     -> sh:Js.number Js.t
-    -> imageDataSettings:image_data_settings Js.t
     -> image_data Js.t Js.meth
 
   method getImageData_1 :
@@ -1238,6 +1389,7 @@ and canvas_rendering_context2d = object
     -> sy:Js.number Js.t
     -> sw:Js.number Js.t
     -> sh:Js.number Js.t
+    -> imageDataSettings:image_data_settings Js.t
     -> image_data Js.t Js.meth
 
   method getLineDash : Js.number Js.t Js.js_array Js.t Js.meth
@@ -1245,30 +1397,34 @@ and canvas_rendering_context2d = object
   method isContextLost : bool Js.t Js.meth
 
   method isPointInPath :
-    path:(* unresolved Path2D *) untranslated
-    -> x:Js.number Js.t
-    -> y:Js.number Js.t
-    -> winding:canvas_fill_rule Js.optdef
-    -> bool Js.t Js.meth
-
-  method isPointInPath_1 :
     x:Js.number Js.t
     -> y:Js.number Js.t
     -> winding:canvas_fill_rule Js.optdef
     -> bool Js.t Js.meth
 
-  method isPointInStroke :
+  method isPointInPath_1 :
+    path:(* unresolved Path2D *) untranslated
+    -> x:Js.number Js.t
+    -> y:Js.number Js.t
+    -> winding:canvas_fill_rule Js.optdef
+    -> bool Js.t Js.meth
+
+  method isPointInStroke : x:Js.number Js.t -> y:Js.number Js.t -> bool Js.t Js.meth
+
+  method isPointInStroke_1 :
     path:(* unresolved Path2D *) untranslated
     -> x:Js.number Js.t
     -> y:Js.number Js.t
     -> bool Js.t Js.meth
 
-  method isPointInStroke_1 : x:Js.number Js.t -> y:Js.number Js.t -> bool Js.t Js.meth
   method lineTo : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
   method measureText : text:Js.js_string Js.t -> text_metrics Js.t Js.meth
   method moveTo : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
 
   method putImageData :
+    imagedata:image_data Js.t -> dx:Js.number Js.t -> dy:Js.number Js.t -> unit Js.meth
+
+  method putImageData_1 :
     imagedata:image_data Js.t
     -> dx:Js.number Js.t
     -> dy:Js.number Js.t
@@ -1277,9 +1433,6 @@ and canvas_rendering_context2d = object
     -> dirtyWidth:Js.number Js.t
     -> dirtyHeight:Js.number Js.t
     -> unit Js.meth
-
-  method putImageData_1 :
-    imagedata:image_data Js.t -> dx:Js.number Js.t -> dy:Js.number Js.t -> unit Js.meth
 
   method quadraticCurveTo :
     cpx:Js.number Js.t
@@ -1330,8 +1483,8 @@ and canvas_rendering_context2d = object
     -> f:Js.number Js.t
     -> unit Js.meth
 
-  method stroke : path:(* unresolved Path2D *) untranslated -> unit Js.meth
-  method stroke_1 : unit Js.meth
+  method stroke : unit Js.meth
+  method stroke_1 : path:(* unresolved Path2D *) untranslated -> unit Js.meth
 
   method strokeRect :
     x:Js.number Js.t
@@ -1609,6 +1762,15 @@ end
 (* see {!Browser.Worker_global_scope} for module definition *)
 and worker_global_scope = object
   inherit event_target
+
+  (** [caches] is unsafe and is only available in [Secure] contexts. In order to access
+      [caches], you must use [ppx_browser]. *)
+  method caches :
+    ( (* unresolved CacheStorage *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method crossOriginIsolated : bool Js.t Js.readonly_prop
   method crypto : (* unresolved Crypto *) untranslated Js.readonly_prop
   method fonts : (* unresolved FontFaceSet *) untranslated Js.readonly_prop
@@ -1666,15 +1828,15 @@ and worker_global_scope = object
 
   method createImageBitmap :
     imageBitmap:image_bitmap_source Js.t
-    -> sx:Js.number Js.t
-    -> sy:Js.number Js.t
-    -> sw:Js.number Js.t
-    -> sh:Js.number Js.t
     -> options:image_bitmap_options Js.t Js.optdef
     -> (* unresolved ImageBitmap *) untranslated js_promise Js.t Js.meth
 
   method createImageBitmap_1 :
     imageBitmap:image_bitmap_source Js.t
+    -> sx:Js.number Js.t
+    -> sy:Js.number Js.t
+    -> sw:Js.number Js.t
+    -> sh:Js.number Js.t
     -> options:image_bitmap_options Js.t Js.optdef
     -> (* unresolved ImageBitmap *) untranslated js_promise Js.t Js.meth
 
@@ -1699,25 +1861,37 @@ and worker_global_scope = object
   method reportError : e:Js.Unsafe.any -> unit Js.meth
 
   method setInterval :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setInterval_1 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_2 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_3 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -1725,37 +1899,25 @@ and worker_global_scope = object
     -> Js.number Js.t Js.meth
 
   method setInterval_4 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setInterval_5 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_6 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_7 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -1763,25 +1925,37 @@ and worker_global_scope = object
     -> Js.number Js.t Js.meth
 
   method setTimeout :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setTimeout_1 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_2 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_3 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -1789,37 +1963,25 @@ and worker_global_scope = object
     -> Js.number Js.t Js.meth
 
   method setTimeout_4 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setTimeout_5 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_6 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_7 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -2760,23 +2922,22 @@ and document = object
 
   method createComment : data:Js.js_string Js.t -> comment Js.t Js.meth
   method createDocumentFragment : document_fragment Js.t Js.meth
+  method createElement : localName:Js.js_string Js.t -> element Js.t Js.meth
 
-  method createElement :
+  method createElement_1 :
     localName:Js.js_string Js.t
     -> options:element_creation_options_or_string Js.t
     -> element Js.t Js.meth
 
-  method createElement_1 : localName:Js.js_string Js.t -> element Js.t Js.meth
-
   method createElementNS :
     namespaceURI:Js.js_string Js.t Js.opt
     -> qualifiedName:Js.js_string Js.t
-    -> options:element_creation_options_or_string Js.t
     -> element Js.t Js.meth
 
   method createElementNS_1 :
     namespaceURI:Js.js_string Js.t Js.opt
     -> qualifiedName:Js.js_string Js.t
+    -> options:element_creation_options_or_string Js.t
     -> element Js.t Js.meth
 
   method createEvent : eventType:Js.js_string Js.t -> event Js.t Js.meth
@@ -2865,15 +3026,15 @@ and document = object
   method moveBefore : node:node Js.t -> child:node Js.t Js.opt -> unit Js.meth
 
   method open_ :
+    type_:Js.js_string Js.t Js.optdef
+    -> replace:Js.js_string Js.t Js.optdef
+    -> document Js.t Js.meth
+
+  method open_1 :
     url:Js.js_string Js.t
     -> name:Js.js_string Js.t
     -> features:Js.js_string Js.t
     -> window Js.t Js.meth
-
-  method open_1 :
-    type_:Js.js_string Js.t Js.optdef
-    -> replace:Js.js_string Js.t Js.optdef
-    -> document Js.t Js.meth
 
   method prepend : unit Js.meth
   method prepend_1 : node:node_or_trusted_script_or_string Js.t -> unit Js.meth
@@ -2911,24 +3072,25 @@ and document = object
     -> node2:node_or_trusted_script_or_string Js.t
     -> unit Js.meth
 
-  method requestStorageAccess :
+  method requestStorageAccess : unit js_promise Js.t Js.meth
+
+  method requestStorageAccess_1 :
     types:storage_access_types Js.t
     -> (* unresolved StorageAccessHandle *) untranslated js_promise Js.t Js.meth
-
-  method requestStorageAccess_1 : unit js_promise Js.t Js.meth
 
   method requestStorageAccessFor :
     requestedOrigin:Js.js_string Js.t -> unit js_promise Js.t Js.meth
 
-  method startViewTransition :
-    opts:view_transition_options Js.t
-    -> (* unresolved ViewTransition *) untranslated Js.meth
+  method startViewTransition : (* unresolved ViewTransition *) untranslated Js.meth
 
   method startViewTransition_1 :
     update:(unit, unit js_promise Js.t) Js.meth_callback
     -> (* unresolved ViewTransition *) untranslated Js.meth
 
-  method startViewTransition_2 : (* unresolved ViewTransition *) untranslated Js.meth
+  method startViewTransition_2 :
+    opts:view_transition_options Js.t
+    -> (* unresolved ViewTransition *) untranslated Js.meth
+
   method webkitCancelFullScreen : unit Js.meth
   method webkitExitFullscreen : unit Js.meth
   method write : text:(* unresolved TrustedHTML *) untranslated -> unit Js.meth
@@ -3437,17 +3599,17 @@ and element = object
   method requestPointerLock :
     options:pointer_lock_options Js.t Js.optdef -> unit js_promise Js.t Js.meth
 
-  method scroll : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scroll_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
-  method scrollBy : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scrollBy_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scroll : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scroll_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
+  method scrollBy : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scrollBy_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
 
   method scrollIntoView :
     arg:scroll_into_view_options_or_bool Js.t Js.optdef -> unit Js.meth
 
   method scrollIntoViewIfNeeded : centerIfNeeded:bool Js.t Js.optdef -> unit Js.meth
-  method scrollTo : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scrollTo_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scrollTo : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scrollTo_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
   method setAttribute : name:Js.js_string Js.t -> value:trusted_type Js.t -> unit Js.meth
 
   method setAttribute_1 :
@@ -3618,14 +3780,14 @@ end
 (* see {!Browser.Form_data} for module definition *)
 and form_data = object
   inherit [Js.js_string Js.t, form_data_entry_value Js.t] js_iterable
+  method append : name:Js.js_string Js.t -> value:Js.js_string Js.t -> unit Js.meth
 
-  method append :
+  method append_1 :
     name:Js.js_string Js.t
     -> value:blob Js.t
     -> filename:Js.js_string Js.t Js.optdef
     -> unit Js.meth
 
-  method append_1 : name:Js.js_string Js.t -> value:Js.js_string Js.t -> unit Js.meth
   method delete : name:Js.js_string Js.t -> unit Js.meth
   method get : name:Js.js_string Js.t -> form_data_entry_value Js.t Js.opt Js.meth
 
@@ -3633,14 +3795,13 @@ and form_data = object
     name:Js.js_string Js.t -> form_data_entry_value Js.t Js.js_array Js.t Js.meth
 
   method has : name:Js.js_string Js.t -> bool Js.t Js.meth
+  method set : name:Js.js_string Js.t -> value:Js.js_string Js.t -> unit Js.meth
 
-  method set :
+  method set_1 :
     name:Js.js_string Js.t
     -> value:blob Js.t
     -> filename:Js.js_string Js.t Js.optdef
     -> unit Js.meth
-
-  method set_1 : name:Js.js_string Js.t -> value:Js.js_string Js.t -> unit Js.meth
 end
 
 (* see {!Browser.Window} for module definition *)
@@ -4604,10 +4765,8 @@ and html_canvas_element = object
 
   method getContext :
     contextId:Js.js_string Js.t
-    -> attributes:
-         (* unresolved CanvasContextCreationAttributesModule *)
-         untranslated Js.optdef
-    -> (* unresolved RenderingContext *) untranslated Js.opt Js.meth
+    -> attributes:canvas_context_creation_attributes_module Js.t Js.optdef
+    -> rendering_context Js.t Js.opt Js.meth
 
   method toBlob :
     _callback:(unit, blob:blob Js.t Js.opt -> unit) Js.meth_callback
@@ -4640,6 +4799,12 @@ end
 (* see {!Browser.Html_iframe_element} for module definition *)
 and html_iframe_element = object
   inherit html_element
+
+  (** [adAuctionHeaders] is unsafe and is only available in [Secure] contexts. In order to
+      access [adAuctionHeaders], you must use [ppx_browser]. *)
+  method adAuctionHeaders :
+    (bool Js.t Js.prop, [ `Secure | `Cross_origin_isolated ]) Browser_js_types.unsafe
+
   method align : Js.js_string Js.t Js.prop
   method allow : Js.js_string Js.t Js.prop
   method allowFullscreen : bool Js.t Js.prop
@@ -4751,15 +4916,14 @@ and html_input_element = object
   method reportValidity : bool Js.t Js.meth
   method select : unit Js.meth
   method setCustomValidity : error:Js.js_string Js.t -> unit Js.meth
+  method setRangeText : replacement:Js.js_string Js.t -> unit Js.meth
 
-  method setRangeText :
+  method setRangeText_1 :
     replacement:Js.js_string Js.t
     -> start:Js.number Js.t
     -> end_:Js.number Js.t
     -> selectionMode:selection_mode Js.optdef
     -> unit Js.meth
-
-  method setRangeText_1 : replacement:Js.js_string Js.t -> unit Js.meth
 
   method setSelectionRange :
     start:Js.number Js.t
@@ -4853,15 +5017,14 @@ and html_text_area_element = object
   method reportValidity : bool Js.t Js.meth
   method select : unit Js.meth
   method setCustomValidity : error:Js.js_string Js.t -> unit Js.meth
+  method setRangeText : replacement:Js.js_string Js.t -> unit Js.meth
 
-  method setRangeText :
+  method setRangeText_1 :
     replacement:Js.js_string Js.t
     -> start:Js.number Js.t
     -> end_:Js.number Js.t
     -> selectionMode:selection_mode Js.optdef
     -> unit Js.meth
-
-  method setRangeText_1 : replacement:Js.js_string Js.t -> unit Js.meth
 
   method setSelectionRange :
     start:Js.number Js.t
@@ -5275,19 +5438,87 @@ and navigator = object
   method appCodeName : Js.js_string Js.t Js.readonly_prop
   method appName : Js.js_string Js.t Js.readonly_prop
   method appVersion : Js.js_string Js.t Js.readonly_prop
+
+  (** [clipboard] is unsafe and is only available in [Secure] contexts. In order to access
+      [clipboard], you must use [ppx_browser]. *)
+  method clipboard :
+    ( (* unresolved Clipboard *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method connection : (* unresolved NetworkInformation *) untranslated Js.readonly_prop
   method cookieEnabled : bool Js.t Js.readonly_prop
+
+  (** [credentials] is unsafe and is only available in [Secure] contexts. In order to
+      access [credentials], you must use [ppx_browser]. *)
+  method credentials :
+    ( (* unresolved CredentialsContainer *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [deviceMemory] is unsafe and is only available in [Secure] contexts. In order to
+      access [deviceMemory], you must use [ppx_browser]. *)
+  method deviceMemory :
+    ( Js.number Js.t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method doNotTrack : Js.js_string Js.t Js.opt Js.readonly_prop
   method geolocation : geolocation Js.t Js.readonly_prop
+
+  (** [gpu] is unsafe and is only available in [Secure] contexts. In order to access
+      [gpu], you must use [ppx_browser]. *)
+  method gpu :
+    ( (* unresolved GPU *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method hardwareConcurrency : Js.number Js.t Js.readonly_prop
   method ink : (* unresolved Ink *) untranslated Js.readonly_prop
+
+  (** [keyboard] is unsafe and is only available in [Secure] contexts. In order to access
+      [keyboard], you must use [ppx_browser]. *)
+  method keyboard :
+    ( (* unresolved Keyboard *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method language : Js.js_string Js.t Js.readonly_prop
   method languages : Js.js_string Js.t Js.js_array Js.t Js.readonly_prop
+
+  (** [locks] is unsafe and is only available in [Secure] contexts. In order to access
+      [locks], you must use [ppx_browser]. *)
+  method locks :
+    ( (* unresolved LockManager *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [managed] is unsafe and is only available in [Secure] contexts. In order to access
+      [managed], you must use [ppx_browser]. *)
+  method managed :
+    ( (* unresolved NavigatorManagedData *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method maxTouchPoints : Js.number Js.t Js.readonly_prop
 
   method mediaCapabilities :
     (* unresolved MediaCapabilities *)
     untranslated Js.readonly_prop
+
+  (** [mediaDevices] is unsafe and is only available in [Secure] contexts. In order to
+      access [mediaDevices], you must use [ppx_browser]. *)
+  method mediaDevices :
+    ( (* unresolved MediaDevices *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method mimeTypes : (* unresolved MimeTypeArray *) untranslated Js.readonly_prop
   method onLine : bool Js.t Js.readonly_prop
@@ -5297,10 +5528,53 @@ and navigator = object
   method product : Js.js_string Js.t Js.readonly_prop
   method productSub : Js.js_string Js.t Js.readonly_prop
   method scheduling : (* unresolved Scheduling *) untranslated Js.readonly_prop
+
+  (** [serviceWorker] is unsafe and is only available in [Secure] contexts. In order to
+      access [serviceWorker], you must use [ppx_browser]. *)
+  method serviceWorker :
+    ( (* unresolved ServiceWorkerContainer *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [storage] is unsafe and is only available in [Secure] contexts. In order to access
+      [storage], you must use [ppx_browser]. *)
+  method storage :
+    ( (* unresolved StorageManager *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method userActivation : (* unresolved UserActivation *) untranslated Js.readonly_prop
   method userAgent : Js.js_string Js.t Js.readonly_prop
+
+  (** [userAgentData] is unsafe and is only available in [Secure] contexts. In order to
+      access [userAgentData], you must use [ppx_browser]. *)
+  method userAgentData :
+    ( (* unresolved NavigatorUAData *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method vendor : Js.js_string Js.t Js.readonly_prop
   method vendorSub : Js.js_string Js.t Js.readonly_prop
+
+  (** [virtualKeyboard] is unsafe and is only available in [Secure] contexts. In order to
+      access [virtualKeyboard], you must use [ppx_browser]. *)
+  method virtualKeyboard :
+    ( (* unresolved VirtualKeyboard *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [wakeLock] is unsafe and is only available in [Secure] contexts. In order to access
+      [wakeLock], you must use [ppx_browser]. *)
+  method wakeLock :
+    ( (* unresolved WakeLock *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method webdriver : bool Js.t Js.readonly_prop
 
   method webkitPersistentStorage :
@@ -5315,19 +5589,84 @@ and navigator = object
     (* unresolved WindowControlsOverlay *)
     untranslated Js.readonly_prop
 
+  (** [clearAppBadge] is unsafe and is only available in [Secure] contexts. In order to
+      call [clearAppBadge], you must use [ppx_browser]. *)
+  method clearAppBadge :
+    ( unit js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [getBattery] is unsafe and is only available in [Secure] contexts. In order to call
+      [getBattery], you must use [ppx_browser]. *)
+  method getBattery :
+    ( (* unresolved BatteryManager *)
+      untranslated js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method getGamepads :
     (* unresolved Gamepad *)
     untranslated Js.opt Js.js_array Js.t Js.meth
 
+  (** [getUserMedia] is unsafe and is only available in [Secure] contexts. In order to
+      call [getUserMedia], you must use [ppx_browser]. *)
+  method getUserMedia :
+    ( constraints:media_stream_constraints Js.t
+      -> successCallback:
+           ( unit
+             , stream:(* unresolved MediaStream *) untranslated -> unit )
+             Js.meth_callback
+      -> errorCallback:(unit, error:media_stream_error Js.t -> unit) Js.meth_callback
+      -> unit Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method javaEnabled : bool Js.t Js.meth
+
+  (** [requestMIDIAccess] is unsafe and is only available in [Secure] contexts. In order
+      to call [requestMIDIAccess], you must use [ppx_browser]. *)
+  method requestMIDIAccess :
+    ( options:midi_options Js.t Js.optdef
+      -> (* unresolved MIDIAccess *) untranslated js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [requestMediaKeySystemAccess] is unsafe and is only available in [Secure] contexts.
+      In order to call [requestMediaKeySystemAccess], you must use [ppx_browser]. *)
+  method requestMediaKeySystemAccess :
+    ( keySystem:Js.js_string Js.t
+      -> supportedConfigurations:media_key_system_configuration Js.t Js.js_array Js.t
+      -> (* unresolved MediaKeySystemAccess *) untranslated js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method sendBeacon :
     url:Js.js_string Js.t
     -> data:readable_stream_or_xml_http_request_body_init Js.t Js.opt Js.optdef
     -> bool Js.t Js.meth
 
+  (** [setAppBadge] is unsafe and is only available in [Secure] contexts. In order to call
+      [setAppBadge], you must use [ppx_browser]. *)
+  method setAppBadge :
+    ( contents:Js.number Js.t Js.optdef -> unit js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method vibrate : pattern:Js.number Js.t Js.js_array Js.t -> bool Js.t Js.meth
   method vibrate_1 : pattern:Js.number Js.t -> bool Js.t Js.meth
+
+  (** [webkitGetUserMedia] is unsafe and is only available in [Secure] contexts. In order
+      to call [webkitGetUserMedia], you must use [ppx_browser]. *)
+  method webkitGetUserMedia :
+    ( constraints:media_stream_constraints Js.t
+      -> successCallback:
+           ( unit
+             , stream:(* unresolved MediaStream *) untranslated -> unit )
+             Js.meth_callback
+      -> errorCallback:(unit, error:media_stream_error Js.t -> unit) Js.meth_callback
+      -> unit Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 end
 
 (* see {!Browser.Document} for module definition *)
@@ -5382,6 +5721,14 @@ and pointer_event = object
   method tiltY : Js.number Js.t Js.readonly_prop
   method twist : Js.number Js.t Js.readonly_prop
   method width : Js.number Js.t Js.readonly_prop
+
+  (** [getCoalescedEvents] is unsafe and is only available in [Secure] contexts. In order
+      to call [getCoalescedEvents], you must use [ppx_browser]. *)
+  method getCoalescedEvents :
+    ( pointer_event Js.t Js.js_array Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method getPredictedEvents : pointer_event Js.t Js.js_array Js.t Js.meth
 end
 
@@ -5423,7 +5770,7 @@ and range = object
 
   method deleteContents : unit Js.meth
   method detach : unit Js.meth
-  method expand : unit:Js.js_string Js.t Js.optdef -> unit Js.meth
+  method expand_deprecated : unit:Js.js_string Js.t Js.optdef -> unit Js.meth
   method extractContents : document_fragment Js.t Js.meth
   method getBoundingClientRect : dom_rect Js.t Js.meth
   method getClientRects : dom_rect_list Js.t Js.meth
@@ -5546,6 +5893,25 @@ and screen = object
   method availWidth : Js.number Js.t Js.readonly_prop
   method colorDepth : Js.number Js.t Js.readonly_prop
   method height : Js.number Js.t Js.readonly_prop
+
+  (** [isExtended] is unsafe and is only available in [Secure] contexts. In order to
+      access [isExtended], you must use [ppx_browser]. *)
+  method isExtended :
+    ( bool Js.t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [onchange] is unsafe and is only available in [Secure] contexts. In order to access
+      [onchange], you must use [ppx_browser]. *)
+  method onchange :
+    ( ( 'self
+        , args:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
+        Js.opt
+        Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method orientation : (* unresolved ScreenOrientation *) untranslated Js.readonly_prop
   method pixelDepth : Js.number Js.t Js.readonly_prop
   method width : Js.number Js.t Js.readonly_prop
@@ -5862,9 +6228,9 @@ and web_socket = object
   method close :
     code:Js.number Js.t Js.optdef -> reason:Js.js_string Js.t Js.optdef -> unit Js.meth
 
-  method send : data:Js_of_ocaml.Typed_array.arrayBufferView Js.t -> unit Js.meth
-  method send_1 : data:Js_of_ocaml.Typed_array.arrayBuffer Js.t -> unit Js.meth
-  method send_2 : data:blob Js.t -> unit Js.meth
+  method send : data:blob Js.t -> unit Js.meth
+  method send_1 : data:Js_of_ocaml.Typed_array.arrayBufferView Js.t -> unit Js.meth
+  method send_2 : data:Js_of_ocaml.Typed_array.arrayBuffer Js.t -> unit Js.meth
   method send_3 : data:Js.js_string Js.t -> unit Js.meth
 end
 
@@ -5888,8 +6254,26 @@ end
 (* see {!Browser.Window} for module definition *)
 and window = object
   inherit window_properties
+
+  (** [caches] is unsafe and is only available in [Secure] contexts. In order to access
+      [caches], you must use [ppx_browser]. *)
+  method caches :
+    ( (* unresolved CacheStorage *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method clientInformation : navigator Js.t Js.readonly_prop
   method closed : bool Js.t Js.readonly_prop
+
+  (** [cookieStore] is unsafe and is only available in [Secure] contexts. In order to
+      access [cookieStore], you must use [ppx_browser]. *)
+  method cookieStore :
+    ( (* unresolved CookieStore *)
+      untranslated Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method crossOriginIsolated : bool Js.t Js.readonly_prop
   method crypto : (* unresolved Crypto *) untranslated Js.readonly_prop
 
@@ -6102,6 +6486,39 @@ and window = object
       Js.meth_callback
       Js.opt
       Js.prop
+
+  (** [ondevicemotion] is unsafe and is only available in [Secure] contexts. In order to
+      access [ondevicemotion], you must use [ppx_browser]. *)
+  method ondevicemotion :
+    ( ( 'self
+        , args:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
+        Js.opt
+        Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [ondeviceorientation] is unsafe and is only available in [Secure] contexts. In order
+      to access [ondeviceorientation], you must use [ppx_browser]. *)
+  method ondeviceorientation :
+    ( ( 'self
+        , args:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
+        Js.opt
+        Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [ondeviceorientationabsolute] is unsafe and is only available in [Secure] contexts.
+      In order to access [ondeviceorientationabsolute], you must use [ppx_browser]. *)
+  method ondeviceorientationabsolute :
+    ( ( 'self
+        , args:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
+        Js.opt
+        Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method ondrag :
     ( 'self
@@ -6742,8 +7159,8 @@ and window = object
 
   method visualViewport : (* unresolved VisualViewport *) untranslated Js.readonly_prop
   method window : window Js.t Js.readonly_prop
-  method alert : message:Js.js_string Js.t -> unit Js.meth
-  method alert_1 : unit Js.meth
+  method alert : unit Js.meth
+  method alert_1 : message:Js.js_string Js.t -> unit Js.meth
   method atob : atob:Js.js_string Js.t -> Js.js_string Js.t Js.meth
   method blur : unit Js.meth
   method btoa : btoa:Js.js_string Js.t -> Js.js_string Js.t Js.meth
@@ -6757,15 +7174,15 @@ and window = object
 
   method createImageBitmap :
     imageBitmap:image_bitmap_source Js.t
-    -> sx:Js.number Js.t
-    -> sy:Js.number Js.t
-    -> sw:Js.number Js.t
-    -> sh:Js.number Js.t
     -> options:image_bitmap_options Js.t Js.optdef
     -> (* unresolved ImageBitmap *) untranslated js_promise Js.t Js.meth
 
   method createImageBitmap_1 :
     imageBitmap:image_bitmap_source Js.t
+    -> sx:Js.number Js.t
+    -> sy:Js.number Js.t
+    -> sw:Js.number Js.t
+    -> sh:Js.number Js.t
     -> options:image_bitmap_options Js.t Js.optdef
     -> (* unresolved ImageBitmap *) untranslated js_promise Js.t Js.meth
 
@@ -6790,6 +7207,14 @@ and window = object
     elt:element Js.t
     -> pseudoElt:Js.js_string Js.t Js.opt Js.optdef
     -> css_style_declaration Js.t Js.meth
+
+  (** [getScreenDetails] is unsafe and is only available in [Secure] contexts. In order to
+      call [getScreenDetails], you must use [ppx_browser]. *)
+  method getScreenDetails :
+    ( (* unresolved ScreenDetails *)
+      untranslated js_promise Js.t Js.meth
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method getSelection : selection Js.t Js.opt Js.meth
   method matchMedia : query:Js.js_string Js.t -> media_query_list Js.t Js.meth
@@ -6836,33 +7261,45 @@ and window = object
 
   method resizeBy : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
   method resizeTo : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scroll : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scroll_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
-  method scrollBy : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scrollBy_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
-  method scrollTo : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
-  method scrollTo_1 : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scroll : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scroll_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
+  method scrollBy : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scrollBy_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
+  method scrollTo : options:scroll_to_options Js.t Js.optdef -> unit Js.meth
+  method scrollTo_1 : x:Js.number Js.t -> y:Js.number Js.t -> unit Js.meth
 
   method setInterval :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setInterval_1 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_2 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_3 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -6870,37 +7307,25 @@ and window = object
     -> Js.number Js.t Js.meth
 
   method setInterval_4 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setInterval_5 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_6 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setInterval_7 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -6908,25 +7333,37 @@ and window = object
     -> Js.number Js.t Js.meth
 
   method setTimeout :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setTimeout_1 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_2 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_3 :
-    handler:script_string Js.t
+    handler:
+      ( unit
+        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
+        Js.meth_callback
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -6934,37 +7371,25 @@ and window = object
     -> Js.number Js.t Js.meth
 
   method setTimeout_4 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> Js.number Js.t Js.meth
 
   method setTimeout_5 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_6 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
     -> Js.number Js.t Js.meth
 
   method setTimeout_7 :
-    handler:
-      ( unit
-        , arguments:(* variadic [Js.Unsafe.any] *) untranslated -> Js.Unsafe.any )
-        Js.meth_callback
+    handler:script_string Js.t
     -> timeout:Js.number Js.t Js.optdef
     -> argument:Js.Unsafe.any
     -> argument1:Js.Unsafe.any
@@ -6978,9 +7403,9 @@ and window = object
     -> options:structured_serialize_options Js.t Js.optdef
     -> Js.Unsafe.any Js.meth
 
-  method webkitCancelAnimationFrame : id:Js.number Js.t -> unit Js.meth
+  method webkitCancelAnimationFrame_deprecated : id:Js.number Js.t -> unit Js.meth
 
-  method webkitRequestAnimationFrame :
+  method webkitRequestAnimationFrame_deprecated :
     callback:(unit, highResTime:Js.number Js.t -> unit) Js.meth_callback
     -> Js.number Js.t Js.meth
 end
@@ -7110,8 +7535,9 @@ and xml_http_request = object
   method abort : unit Js.meth
   method getAllResponseHeaders : Js.js_string Js.t Js.meth
   method getResponseHeader : name:Js.js_string Js.t -> Js.js_string Js.t Js.opt Js.meth
+  method open_ : method_:Js.js_string Js.t -> url:Js.js_string Js.t -> unit Js.meth
 
-  method open_ :
+  method open_1 :
     method_:Js.js_string Js.t
     -> url:Js.js_string Js.t
     -> async:bool Js.t
@@ -7119,7 +7545,6 @@ and xml_http_request = object
     -> password:Js.js_string Js.t Js.opt Js.optdef
     -> unit Js.meth
 
-  method open_1 : method_:Js.js_string Js.t -> url:Js.js_string Js.t -> unit Js.meth
   method overrideMimeType : mime:Js.js_string Js.t -> unit Js.meth
 
   method send :

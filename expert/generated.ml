@@ -31,15 +31,15 @@ module Global = struct
 
   let get () : t =
     let window =
-      try Js.Unsafe.js_expr "window" with
+      try Js.Unsafe.js_expr "globalThis.window" with
       | _ -> Js.undefined
     in
     let self =
-      try Js.Unsafe.js_expr "self" with
+      try Js.Unsafe.js_expr "globalThis.self" with
       | _ -> Js.undefined
     in
     let global_this =
-      try Js.Unsafe.js_expr "globalThis" with
+      try Js.Unsafe.js_expr "globalThis.globalThis" with
       | _ -> Js.undefined
     in
     if Js.Optdef.case window return_false (fun window ->
@@ -66,6 +66,29 @@ module Global = struct
     else if Js.Optdef.test global_this
     then `Unknown (Js.Unsafe.js_expr "globalThis")
     else `Undefined
+  ;;
+
+  let is_secure_context globals =
+    match globals with
+    | `Window global_scope -> Js.to_bool global_scope##.isSecureContext
+    | `Dedicated_worker global_scope -> Js.to_bool global_scope##.isSecureContext
+    | `Shared_worker global_scope -> Js.to_bool global_scope##.isSecureContext
+    | `Unknown _ | `Undefined -> false
+  ;;
+
+  let is_cross_origin_isolated globals =
+    match globals with
+    | `Window global_scope -> Js.to_bool global_scope##.crossOriginIsolated
+    | `Dedicated_worker global_scope -> Js.to_bool global_scope##.crossOriginIsolated
+    | `Shared_worker global_scope -> Js.to_bool global_scope##.crossOriginIsolated
+    | `Unknown _ | `Undefined -> false
+  ;;
+
+  let is_in_context : type a. context:a Context.t -> t -> bool =
+    fun ~context globals ->
+    match context with
+    | Secure -> is_secure_context globals
+    | Cross_origin_isolated -> is_cross_origin_isolated globals
   ;;
 
   let window () =

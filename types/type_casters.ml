@@ -75,6 +75,52 @@ external video_frame_to_canvas_image_source
   -> canvas_image_source Js.t
   = "%identity"
 
+external constrain_boolean_parameters_to_constrain_boolean
+  :  constrain_boolean_parameters Js.t
+  -> constrain_boolean Js.t
+  = "%identity"
+
+external bool_to_constrain_boolean : bool Js.t -> constrain_boolean Js.t = "%identity"
+
+external constrain_dom_string_parameters_to_constrain_dom_string
+  :  constrain_dom_string_parameters Js.t
+  -> constrain_dom_string Js.t
+  = "%identity"
+
+external string_array_to_constrain_dom_string
+  :  Js.js_string Js.t Js.js_array Js.t
+  -> constrain_dom_string Js.t
+  = "%identity"
+
+external string_to_constrain_dom_string
+  :  Js.js_string Js.t
+  -> constrain_dom_string Js.t
+  = "%identity"
+
+external constrain_double_range_to_constrain_double
+  :  constrain_double_range Js.t
+  -> constrain_double Js.t
+  = "%identity"
+
+external float_to_constrain_double : Js.number Js.t -> constrain_double Js.t = "%identity"
+
+external constrain_long_range_to_constrain_long
+  :  constrain_long_range Js.t
+  -> constrain_long Js.t
+  = "%identity"
+
+external int_to_constrain_long : Js.number Js.t -> constrain_long Js.t = "%identity"
+
+external constrain_point2d_parameters_to_constrain_point2d
+  :  constrain_point2d_parameters Js.t
+  -> constrain_point2d Js.t
+  = "%identity"
+
+external point2d_array_to_constrain_point2d
+  :  point2d Js.t Js.js_array Js.t
+  -> constrain_point2d Js.t
+  = "%identity"
+
 external file_to_form_data_entry_value
   :  file Js.t
   -> form_data_entry_value Js.t
@@ -147,6 +193,16 @@ external video_frame_to_image_bitmap_source
   -> image_bitmap_source Js.t
   = "%identity"
 
+external dom_exception_to_media_stream_error
+  :  dom_exception Js.t
+  -> media_stream_error Js.t
+  = "%identity"
+
+external overconstrained_error_to_media_stream_error
+  :  (* unresolved OverconstrainedError *) untranslated
+  -> media_stream_error Js.t
+  = "%identity"
+
 external readable_stream_byob_reader_to_readable_stream_reader
   :  (* unresolved ReadableStreamBYOBReader *) untranslated
   -> readable_stream_reader Js.t
@@ -155,6 +211,31 @@ external readable_stream_byob_reader_to_readable_stream_reader
 external readable_stream_default_reader_to_readable_stream_reader
   :  (* unresolved ReadableStreamDefaultReader *) untranslated
   -> readable_stream_reader Js.t
+  = "%identity"
+
+external canvas_rendering_context2d_to_rendering_context
+  :  canvas_rendering_context2d Js.t
+  -> rendering_context Js.t
+  = "%identity"
+
+external gpu_canvas_context_to_rendering_context
+  :  (* unresolved GPUCanvasContext *) untranslated
+  -> rendering_context Js.t
+  = "%identity"
+
+external image_bitmap_rendering_context_to_rendering_context
+  :  (* unresolved ImageBitmapRenderingContext *) untranslated
+  -> rendering_context Js.t
+  = "%identity"
+
+external web_gl2_rendering_context_to_rendering_context
+  :  (* unresolved WebGL2RenderingContext *) untranslated
+  -> rendering_context Js.t
+  = "%identity"
+
+external web_gl_rendering_context_to_rendering_context
+  :  (* unresolved WebGLRenderingContext *) untranslated
+  -> rendering_context Js.t
   = "%identity"
 
 external request_to_request_info : request Js.t -> request_info Js.t = "%identity"
@@ -256,6 +337,16 @@ external string_to_canvas_filter_or_string
   -> canvas_filter_or_string Js.t
   = "%identity"
 
+external constrain_double_to_constrain_double_or_bool
+  :  constrain_double Js.t
+  -> constrain_double_or_bool Js.t
+  = "%identity"
+
+external bool_to_constrain_double_or_bool
+  :  bool Js.t
+  -> constrain_double_or_bool Js.t
+  = "%identity"
+
 external dom_point_init_to_dom_point_init_or_float
   :  dom_point_init Js.t
   -> dom_point_init_or_float Js.t
@@ -351,6 +442,16 @@ external media_list_to_media_list_or_string
 external string_to_media_list_or_string
   :  Js.js_string Js.t
   -> media_list_or_string Js.t
+  = "%identity"
+
+external media_track_constraints_to_media_track_constraints_or_bool
+  :  media_track_constraints Js.t
+  -> media_track_constraints_or_bool Js.t
+  = "%identity"
+
+external bool_to_media_track_constraints_or_bool
+  :  bool Js.t
+  -> media_track_constraints_or_bool Js.t
   = "%identity"
 
 external node_to_node_or_trusted_script_or_string
