@@ -348,10 +348,10 @@ class type url = object
   method canParse :
     url:Js.js_string Js.t -> base:Js.js_string Js.t Js.optdef -> bool Js.t Js.meth
 
-  method createObjectURL :
-    source:Interfaces.media_source Js.t -> Js.js_string Js.t Js.meth
+  method createObjectURL : blob:Interfaces.blob Js.t -> Js.js_string Js.t Js.meth
 
-  method createObjectURL_1 : blob:Interfaces.blob Js.t -> Js.js_string Js.t Js.meth
+  method createObjectURL_1 :
+    source:Interfaces.media_source Js.t -> Js.js_string Js.t Js.meth
 
   method parse :
     url:Js.js_string Js.t

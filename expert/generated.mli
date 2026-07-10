@@ -15,6 +15,10 @@ module Global : sig
       [`Unknown] is the fallback variant for unrecognized global scopes *)
   val get : unit -> t
 
+  (** [is_in_context] retrieves the global object and checks to see whether or not we are
+      in the provided [context] *)
+  val is_in_context : 'a. context:'a Context.t -> t -> bool
+
   (** [window] returns [Window] if it is the global scope. Otherwise, returns [None] *)
   val window : unit -> Types.Globals.window Js.t option
 

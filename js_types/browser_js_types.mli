@@ -45,9 +45,25 @@ class type ['k, 'v] js_iterable = object
   method entries : ('k, 'v) entry Js.t js_iterator Js.t Js.meth
 end
 
+class type ['k, 'v, 'context] js_iterable_unsafe = object
+  method forEach_unsafe :
+    ( (unit, 'v -> 'k -> 'this Js.t -> unit) Js.meth_callback -> unit Js.meth
+      , 'context )
+      unsafe
+
+  method keys_unsafe : ('k js_iterator Js.t Js.meth, 'context) unsafe
+  method values_unsafe : ('v js_iterator Js.t Js.meth, 'context) unsafe
+  method entries_unsafe : (('k, 'v) entry Js.t js_iterator Js.t Js.meth, 'context) unsafe
+end
+
 class type ['v] js_indexed_iterable = object
   inherit [Js.number_t, 'v] js_iterable
   method length : Js.number Js.t Js.readonly_prop
+end
+
+class type ['v, 'context] js_indexed_iterable_unsafe = object
+  inherit [Js.number_t, 'v, 'context] js_iterable_unsafe
+  method length_unsafe : (Js.number Js.t Js.readonly_prop, 'context) unsafe
 end
 
 class type ['k, 'v] js_readonly_maplike = object

@@ -3,6 +3,8 @@ module Js = Js_of_ocaml.Js
 module Types = Browser_types
 module Record = Record
 module Int64 = Int64
+module Context = Context
+module Unsafe = Browser_manually_written_bindings.Unsafe
 include Generated
 
 let is_typeof = Private_browser_bindings_shared.Type_checking_utils.is_typeof
@@ -55,3 +57,17 @@ let coerce : type a. to_:a Browser_js_types.instance_t -> _ Js.t -> a Js.t optio
      | true -> Some (Js.Unsafe.coerce input_object)
      | false -> None)
 ;;
+
+module For_open = struct
+  module Ppx_browser_syntax = struct
+    let check_context =
+      Browser_manually_written_bindings.Unsafe_context_checker.make
+        (module struct
+          type global = Generated.Global.t
+
+          let is_in_context = Generated.Global.is_in_context
+          let get_global = Global.get
+        end)
+    ;;
+  end
+end

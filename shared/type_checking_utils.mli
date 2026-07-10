@@ -48,16 +48,6 @@ val is_exact_instance_of
   -> 'a Js.t
   -> bool
 
-(** Returns [true] if ['a Js.t] is an instance of [type_] or is an instance of a subclass
-    of [type_] *)
-val is_instance_of
-  : 'global 'constr 'a.
-  get_class_obj_from_global:(global:'global -> string -> 'constr Js.constr Js.optdef)
-  -> type_:string
-  -> global:'global
-  -> 'a Js.t
-  -> bool
-
 (** Checks ['a Js.t] using [typeof] *)
 val is_typeof
   :  'a Js.t
