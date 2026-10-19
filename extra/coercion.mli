@@ -112,6 +112,8 @@ val to_jsoo_media_event : event Js.t -> Dom_html.mediaEvent Js.t
 val of_jsoo_media_event : Dom_html.mediaEvent Js.t -> event Js.t
 
 (** Message Event conversions *)
-val to_jsoo_message_event : message_event Js.t -> Dom_html.messageEvent Js.t
+val to_jsoo_message_event
+  :  message_event Js.t
+  -> (Js.Unsafe.top, Js.Unsafe.any Js.opt) Dom_html.messageEvent Js.t
 
-val of_jsoo_message_event : Dom_html.messageEvent Js.t -> message_event Js.t
+val of_jsoo_message_event : (_, _) Dom_html.messageEvent Js.t -> message_event Js.t

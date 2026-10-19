@@ -234,11 +234,13 @@ let of_jsoo_media_event (event : Dom_html.mediaEvent Js.t) =
 
 (* Message Event *)
 let to_jsoo_message_event (event : message_event Js.t) =
-  let event : Dom_html.messageEvent Js.t = Js.Unsafe.coerce event in
+  let event : (Js.Unsafe.top, Js.Unsafe.any Js.opt) Dom_html.messageEvent Js.t =
+    Js.Unsafe.coerce event
+  in
   event
 ;;
 
-let of_jsoo_message_event (event : Dom_html.messageEvent Js.t) =
+let of_jsoo_message_event (event : (_, _) Dom_html.messageEvent Js.t) =
   let event : message_event Js.t = Js.Unsafe.coerce event in
   event
 ;;
