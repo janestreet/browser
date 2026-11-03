@@ -51,6 +51,12 @@ class type dedicated_worker_global_scope = object
   method _CompressionStream_t :
     Interfaces.compression_stream Browser_js_types.instance_t Js.readonly_prop
 
+  method _CropTarget : Class_definitions.crop_target Js.t Js.prop
+
+  method _CropTarget_t :
+    Interfaces.crop_target Browser_js_types.instance_t Js.readonly_prop
+
+  method _Crypto_t : Interfaces.crypto Browser_js_types.instance_t Js.readonly_prop
   method _CustomEvent : Class_definitions.custom_event Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -76,6 +82,25 @@ class type dedicated_worker_global_scope = object
 
   method _DOMException_t :
     Interfaces.dom_exception Browser_js_types.instance_t Js.readonly_prop
+
+  method _DOMMatrix : Class_definitions.dom_matrix Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrix_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix Js.t) Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrix_t : Interfaces.dom_matrix Browser_js_types.instance_t Js.readonly_prop
+  method _DOMMatrixReadOnly : Class_definitions.dom_matrix_read_only Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrixReadOnly_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix_read_only Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrixReadOnly_t :
+    Interfaces.dom_matrix_read_only Browser_js_types.instance_t Js.readonly_prop
 
   method _DOMRect : Class_definitions.dom_rect Js.t Js.prop
 
@@ -175,17 +200,111 @@ class type dedicated_worker_global_scope = object
   method _FileReader_t :
     Interfaces.file_reader Browser_js_types.instance_t Js.readonly_prop
 
+  method _FontFace : Class_definitions.font_face Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _FontFace_constructor :
+    (family:cssom_string Js.t
+     -> source:binary_data_or_cssom_string Js.t
+     -> descriptors:Interfaces.font_face_descriptors Js.t Js.optdef
+     -> Interfaces.font_face Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _FontFace_t : Interfaces.font_face Browser_js_types.instance_t Js.readonly_prop
+
+  method _FontFaceSet_t :
+    Interfaces.font_face_set Browser_js_types.instance_t Js.readonly_prop
+
   method _FormData : Class_definitions.form_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _FormData_constructor :
-    (form:(* unresolved HTMLFormElement *) untranslated Js.optdef
+    (form:Interfaces.html_form_element Js.t Js.optdef
      -> submitter:Interfaces.html_element Js.t Js.opt Js.optdef
      -> Interfaces.form_data Js.t)
       Js.constr
       Js.readonly_prop
 
   method _FormData_t : Interfaces.form_data Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_GPU] is unsafe and is only available in [Secure] contexts. In order to typecast to
+      [_GPU], you must use [ppx_browser]. *)
+  method _GPU_t :
+    ( Interfaces.gpu Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUAdapter] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUAdapter], you must use [ppx_browser]. *)
+  method _GPUAdapter_t :
+    ( Interfaces.gpu_adapter Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCanvasContext] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCanvasContext], you must use [ppx_browser]. *)
+  method _GPUCanvasContext_t :
+    ( Interfaces.gpu_canvas_context Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandBuffer] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandBuffer], you must use [ppx_browser]. *)
+  method _GPUCommandBuffer_t :
+    ( Interfaces.gpu_command_buffer Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandEncoder] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandEncoder], you must use [ppx_browser]. *)
+  method _GPUCommandEncoder_t :
+    ( Interfaces.gpu_command_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUDevice] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUDevice], you must use [ppx_browser]. *)
+  method _GPUDevice_t :
+    ( Interfaces.gpu_device Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQuerySet] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQuerySet], you must use [ppx_browser]. *)
+  method _GPUQuerySet_t :
+    ( Interfaces.gpu_query_set Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQueue] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQueue], you must use [ppx_browser]. *)
+  method _GPUQueue_t :
+    ( Interfaces.gpu_queue Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPURenderPassEncoder] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_GPURenderPassEncoder], you must use [ppx_browser]. *)
+  method _GPURenderPassEncoder_t :
+    ( Interfaces.gpu_render_pass_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTexture] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTexture], you must use [ppx_browser]. *)
+  method _GPUTexture_t :
+    ( Interfaces.gpu_texture Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTextureView] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTextureView], you must use [ppx_browser]. *)
+  method _GPUTextureView_t :
+    ( Interfaces.gpu_texture_view Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _Headers : Class_definitions.headers Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -194,6 +313,13 @@ class type dedicated_worker_global_scope = object
       Js.readonly_prop
 
   method _Headers_t : Interfaces.headers Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmap_t :
+    Interfaces.image_bitmap Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmapRenderingContext_t :
+    Interfaces.image_bitmap_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
   method _ImageData : Class_definitions.image_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -213,7 +339,7 @@ class type dedicated_worker_global_scope = object
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _ImageData_constructor2 :
-    (data:(* Uint8ClampedArray *) untranslated
+    (data:Browser_js_types.Uint8_clamped_array.t Js.t
      -> sw:Js.number Js.t
      -> sh:Js.number Js.t Js.optdef
      -> settings:Interfaces.image_data_settings Js.t Js.optdef
@@ -250,6 +376,9 @@ class type dedicated_worker_global_scope = object
   method _MediaSource_t :
     Interfaces.media_source Browser_js_types.instance_t Js.readonly_prop
 
+  method _MediaSourceHandle_t :
+    Interfaces.media_source_handle Browser_js_types.instance_t Js.readonly_prop
+
   method _MessageEvent : Class_definitions.message_event Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -262,6 +391,33 @@ class type dedicated_worker_global_scope = object
 
   method _MessageEvent_t :
     Interfaces.message_event Browser_js_types.instance_t Js.readonly_prop
+
+  method _OffscreenCanvas : Class_definitions.offscreen_canvas Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _OffscreenCanvas_constructor :
+    (width:Js.number Js.t -> height:Js.number Js.t -> Interfaces.offscreen_canvas Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _OffscreenCanvas_t :
+    Interfaces.offscreen_canvas Browser_js_types.instance_t Js.readonly_prop
+
+  method _OffscreenCanvasRenderingContext2D_t :
+    Interfaces.offscreen_canvas_rendering_context2d Browser_js_types.instance_t
+      Js.readonly_prop
+
+  method _Path2D : Class_definitions.path2d Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _Path2D_constructor :
+    (path:path2d_or_string Js.t Js.optdef -> Interfaces.path2d Js.t) Js.constr
+      Js.readonly_prop
+
+  method _Path2D_t : Interfaces.path2d Browser_js_types.instance_t Js.readonly_prop
+
+  method _Performance_t :
+    Interfaces.performance Browser_js_types.instance_t Js.readonly_prop
 
   method _PerformanceEntry_t :
     Interfaces.performance_entry Browser_js_types.instance_t Js.readonly_prop
@@ -283,6 +439,12 @@ class type dedicated_worker_global_scope = object
 
   method _PerformanceObserver_t :
     Interfaces.performance_observer Browser_js_types.instance_t Js.readonly_prop
+
+  method _PermissionStatus_t :
+    Interfaces.permission_status Browser_js_types.instance_t Js.readonly_prop
+
+  method _Permissions_t :
+    Interfaces.permissions Browser_js_types.instance_t Js.readonly_prop
 
   method _ProgressEvent : Class_definitions.progress_event Js.t Js.prop
 
@@ -359,6 +521,53 @@ class type dedicated_worker_global_scope = object
 
   method _URLSearchParams_t :
     Interfaces.url_search_params Browser_js_types.instance_t Js.readonly_prop
+
+  method _VideoFrame : Class_definitions.video_frame Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _VideoFrame_constructor :
+    (source:canvas_image_source Js.t
+     -> init:Interfaces.video_frame_init Js.t Js.optdef
+     -> Interfaces.video_frame Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _VideoFrame_constructor1 :
+    (data:allow_shared_buffer_source Js.t
+     -> init:Interfaces.video_frame_buffer_init Js.t
+     -> Interfaces.video_frame Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _VideoFrame_t :
+    Interfaces.video_frame Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGL2RenderingContext :
+    Class_definitions.web_gl2_rendering_context Js.t Js.prop
+
+  method _WebGL2RenderingContext_t :
+    Interfaces.web_gl2_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLBuffer_t :
+    Interfaces.web_gl_buffer Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLObject_t :
+    Interfaces.web_gl_object Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLProgram_t :
+    Interfaces.web_gl_program Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLRenderingContext : Class_definitions.web_gl_rendering_context Js.t Js.prop
+
+  method _WebGLRenderingContext_t :
+    Interfaces.web_gl_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLShader_t :
+    Interfaces.web_gl_shader Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLUniformLocation_t :
+    Interfaces.web_gl_uniform_location Browser_js_types.instance_t Js.readonly_prop
 
   method _WebSocket : Class_definitions.web_socket Js.t Js.prop
 
@@ -478,6 +687,12 @@ class type shared_worker_global_scope = object
   method _CompressionStream_t :
     Interfaces.compression_stream Browser_js_types.instance_t Js.readonly_prop
 
+  method _CropTarget : Class_definitions.crop_target Js.t Js.prop
+
+  method _CropTarget_t :
+    Interfaces.crop_target Browser_js_types.instance_t Js.readonly_prop
+
+  method _Crypto_t : Interfaces.crypto Browser_js_types.instance_t Js.readonly_prop
   method _CustomEvent : Class_definitions.custom_event Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -503,6 +718,25 @@ class type shared_worker_global_scope = object
 
   method _DOMException_t :
     Interfaces.dom_exception Browser_js_types.instance_t Js.readonly_prop
+
+  method _DOMMatrix : Class_definitions.dom_matrix Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrix_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix Js.t) Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrix_t : Interfaces.dom_matrix Browser_js_types.instance_t Js.readonly_prop
+  method _DOMMatrixReadOnly : Class_definitions.dom_matrix_read_only Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrixReadOnly_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix_read_only Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrixReadOnly_t :
+    Interfaces.dom_matrix_read_only Browser_js_types.instance_t Js.readonly_prop
 
   method _DOMRect : Class_definitions.dom_rect Js.t Js.prop
 
@@ -596,17 +830,111 @@ class type shared_worker_global_scope = object
   method _FileReader_t :
     Interfaces.file_reader Browser_js_types.instance_t Js.readonly_prop
 
+  method _FontFace : Class_definitions.font_face Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _FontFace_constructor :
+    (family:cssom_string Js.t
+     -> source:binary_data_or_cssom_string Js.t
+     -> descriptors:Interfaces.font_face_descriptors Js.t Js.optdef
+     -> Interfaces.font_face Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _FontFace_t : Interfaces.font_face Browser_js_types.instance_t Js.readonly_prop
+
+  method _FontFaceSet_t :
+    Interfaces.font_face_set Browser_js_types.instance_t Js.readonly_prop
+
   method _FormData : Class_definitions.form_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _FormData_constructor :
-    (form:(* unresolved HTMLFormElement *) untranslated Js.optdef
+    (form:Interfaces.html_form_element Js.t Js.optdef
      -> submitter:Interfaces.html_element Js.t Js.opt Js.optdef
      -> Interfaces.form_data Js.t)
       Js.constr
       Js.readonly_prop
 
   method _FormData_t : Interfaces.form_data Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_GPU] is unsafe and is only available in [Secure] contexts. In order to typecast to
+      [_GPU], you must use [ppx_browser]. *)
+  method _GPU_t :
+    ( Interfaces.gpu Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUAdapter] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUAdapter], you must use [ppx_browser]. *)
+  method _GPUAdapter_t :
+    ( Interfaces.gpu_adapter Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCanvasContext] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCanvasContext], you must use [ppx_browser]. *)
+  method _GPUCanvasContext_t :
+    ( Interfaces.gpu_canvas_context Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandBuffer] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandBuffer], you must use [ppx_browser]. *)
+  method _GPUCommandBuffer_t :
+    ( Interfaces.gpu_command_buffer Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandEncoder] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandEncoder], you must use [ppx_browser]. *)
+  method _GPUCommandEncoder_t :
+    ( Interfaces.gpu_command_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUDevice] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUDevice], you must use [ppx_browser]. *)
+  method _GPUDevice_t :
+    ( Interfaces.gpu_device Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQuerySet] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQuerySet], you must use [ppx_browser]. *)
+  method _GPUQuerySet_t :
+    ( Interfaces.gpu_query_set Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQueue] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQueue], you must use [ppx_browser]. *)
+  method _GPUQueue_t :
+    ( Interfaces.gpu_queue Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPURenderPassEncoder] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_GPURenderPassEncoder], you must use [ppx_browser]. *)
+  method _GPURenderPassEncoder_t :
+    ( Interfaces.gpu_render_pass_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTexture] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTexture], you must use [ppx_browser]. *)
+  method _GPUTexture_t :
+    ( Interfaces.gpu_texture Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTextureView] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTextureView], you must use [ppx_browser]. *)
+  method _GPUTextureView_t :
+    ( Interfaces.gpu_texture_view Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _Headers : Class_definitions.headers Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -615,6 +943,13 @@ class type shared_worker_global_scope = object
       Js.readonly_prop
 
   method _Headers_t : Interfaces.headers Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmap_t :
+    Interfaces.image_bitmap Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmapRenderingContext_t :
+    Interfaces.image_bitmap_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
   method _ImageData : Class_definitions.image_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -634,7 +969,7 @@ class type shared_worker_global_scope = object
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _ImageData_constructor2 :
-    (data:(* Uint8ClampedArray *) untranslated
+    (data:Browser_js_types.Uint8_clamped_array.t Js.t
      -> sw:Js.number Js.t
      -> sh:Js.number Js.t Js.optdef
      -> settings:Interfaces.image_data_settings Js.t Js.optdef
@@ -675,6 +1010,33 @@ class type shared_worker_global_scope = object
   method _MessageEvent_t :
     Interfaces.message_event Browser_js_types.instance_t Js.readonly_prop
 
+  method _OffscreenCanvas : Class_definitions.offscreen_canvas Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _OffscreenCanvas_constructor :
+    (width:Js.number Js.t -> height:Js.number Js.t -> Interfaces.offscreen_canvas Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _OffscreenCanvas_t :
+    Interfaces.offscreen_canvas Browser_js_types.instance_t Js.readonly_prop
+
+  method _OffscreenCanvasRenderingContext2D_t :
+    Interfaces.offscreen_canvas_rendering_context2d Browser_js_types.instance_t
+      Js.readonly_prop
+
+  method _Path2D : Class_definitions.path2d Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _Path2D_constructor :
+    (path:path2d_or_string Js.t Js.optdef -> Interfaces.path2d Js.t) Js.constr
+      Js.readonly_prop
+
+  method _Path2D_t : Interfaces.path2d Browser_js_types.instance_t Js.readonly_prop
+
+  method _Performance_t :
+    Interfaces.performance Browser_js_types.instance_t Js.readonly_prop
+
   method _PerformanceEntry_t :
     Interfaces.performance_entry Browser_js_types.instance_t Js.readonly_prop
 
@@ -695,6 +1057,12 @@ class type shared_worker_global_scope = object
 
   method _PerformanceObserver_t :
     Interfaces.performance_observer Browser_js_types.instance_t Js.readonly_prop
+
+  method _PermissionStatus_t :
+    Interfaces.permission_status Browser_js_types.instance_t Js.readonly_prop
+
+  method _Permissions_t :
+    Interfaces.permissions Browser_js_types.instance_t Js.readonly_prop
 
   method _ProgressEvent : Class_definitions.progress_event Js.t Js.prop
 
@@ -777,6 +1145,32 @@ class type shared_worker_global_scope = object
 
   method _URLSearchParams_t :
     Interfaces.url_search_params Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGL2RenderingContext :
+    Class_definitions.web_gl2_rendering_context Js.t Js.prop
+
+  method _WebGL2RenderingContext_t :
+    Interfaces.web_gl2_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLBuffer_t :
+    Interfaces.web_gl_buffer Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLObject_t :
+    Interfaces.web_gl_object Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLProgram_t :
+    Interfaces.web_gl_program Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLRenderingContext : Class_definitions.web_gl_rendering_context Js.t Js.prop
+
+  method _WebGLRenderingContext_t :
+    Interfaces.web_gl_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLShader_t :
+    Interfaces.web_gl_shader Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLUniformLocation_t :
+    Interfaces.web_gl_uniform_location Browser_js_types.instance_t Js.readonly_prop
 
   method _WebSocket : Class_definitions.web_socket Js.t Js.prop
 
@@ -862,6 +1256,13 @@ class type window = object
 
   method _Attr_t : Interfaces.attr Browser_js_types.instance_t Js.readonly_prop
 
+  (** [_AuthenticatorResponse] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_AuthenticatorResponse], you must use [ppx_browser]. *)
+  method _AuthenticatorResponse_t :
+    ( Interfaces.authenticator_response Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _BeforeUnloadEvent_t :
     Interfaces.before_unload_event Browser_js_types.instance_t Js.readonly_prop
 
@@ -876,7 +1277,16 @@ class type window = object
       Js.readonly_prop
 
   method _Blob_t : Interfaces.blob Browser_js_types.instance_t Js.readonly_prop
+
+  method _BrowserCaptureMediaStreamTrack_t :
+    Interfaces.browser_capture_media_stream_track Browser_js_types.instance_t
+      Js.readonly_prop
+
   method _CSS : css Js.t Js.prop
+
+  method _CSSImageValue_t :
+    Interfaces.css_image_value Browser_js_types.instance_t Js.readonly_prop
+
   method _CSSNumericValue : Class_definitions.css_numeric_value Js.t Js.prop
 
   method _CSSNumericValue_t :
@@ -884,6 +1294,9 @@ class type window = object
 
   method _CSSRule : Class_definitions.css_rule Js.t Js.prop
   method _CSSRule_t : Interfaces.css_rule Browser_js_types.instance_t Js.readonly_prop
+
+  method _CSSRuleList_t :
+    Interfaces.css_rule_list Browser_js_types.instance_t Js.readonly_prop
 
   method _CSSStyleDeclaration_t :
     Interfaces.css_style_declaration Browser_js_types.instance_t Js.readonly_prop
@@ -916,6 +1329,10 @@ class type window = object
   method _CSSUnitValue_t :
     Interfaces.css_unit_value Browser_js_types.instance_t Js.readonly_prop
 
+  method _CanvasCaptureMediaStreamTrack_t :
+    Interfaces.canvas_capture_media_stream_track Browser_js_types.instance_t
+      Js.readonly_prop
+
   method _CanvasGradient_t :
     Interfaces.canvas_gradient Browser_js_types.instance_t Js.readonly_prop
 
@@ -927,6 +1344,13 @@ class type window = object
 
   method _CharacterData_t :
     Interfaces.character_data Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_Clipboard] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_Clipboard], you must use [ppx_browser]. *)
+  method _Clipboard_t :
+    ( Interfaces.clipboard Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method _ClipboardEvent : Class_definitions.clipboard_event Js.t Js.prop
 
@@ -940,6 +1364,32 @@ class type window = object
 
   method _ClipboardEvent_t :
     Interfaces.clipboard_event Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_ClipboardItem] is unsafe and is only available in [Secure] contexts. In order to
+      construct [_ClipboardItem] or interact with any of its static members, you must use
+      [ppx_browser]. *)
+  method _ClipboardItem :
+    ( Class_definitions.clipboard_item Js.t Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_ClipboardItem] is unsafe and is only available in [Secure] contexts. In order to
+      construct [_ClipboardItem] using this constructor, you must use [ppx_browser].
+      Constructors must be bound to an identifier before being called with [new%js] *)
+  method _ClipboardItem_constructor :
+    ( (items:blob_or_string Js.t js_promise Js.t record Js.t
+       -> Interfaces.clipboard_item Js.t)
+        Js.constr
+        Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_ClipboardItem] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_ClipboardItem], you must use [ppx_browser]. *)
+  method _ClipboardItem_t :
+    ( Interfaces.clipboard_item Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method _CloseEvent : Class_definitions.close_event Js.t Js.prop
 
@@ -962,6 +1412,19 @@ class type window = object
       Js.readonly_prop
 
   method _Comment_t : Interfaces.comment Browser_js_types.instance_t Js.readonly_prop
+  method _CompositionEvent : Class_definitions.composition_event Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _CompositionEvent_constructor :
+    (type_:Js.js_string Js.t
+     -> eventInitDict:Interfaces.composition_event_init Js.t Js.optdef
+     -> Interfaces.composition_event Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _CompositionEvent_t :
+    Interfaces.composition_event Browser_js_types.instance_t Js.readonly_prop
+
   method _CompressionStream : Class_definitions.compression_stream Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -972,6 +1435,26 @@ class type window = object
   method _CompressionStream_t :
     Interfaces.compression_stream Browser_js_types.instance_t Js.readonly_prop
 
+  (** [_Credential] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_Credential], you must use [ppx_browser]. *)
+  method _Credential_t :
+    ( Interfaces.credential Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_CredentialsContainer] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_CredentialsContainer], you must use [ppx_browser]. *)
+  method _CredentialsContainer_t :
+    ( Interfaces.credentials_container Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  method _CropTarget : Class_definitions.crop_target Js.t Js.prop
+
+  method _CropTarget_t :
+    Interfaces.crop_target Browser_js_types.instance_t Js.readonly_prop
+
+  method _Crypto_t : Interfaces.crypto Browser_js_types.instance_t Js.readonly_prop
   method _CustomEvent : Class_definitions.custom_event Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -1000,6 +1483,25 @@ class type window = object
 
   method _DOMImplementation_t :
     Interfaces.dom_implementation Browser_js_types.instance_t Js.readonly_prop
+
+  method _DOMMatrix : Class_definitions.dom_matrix Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrix_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix Js.t) Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrix_t : Interfaces.dom_matrix Browser_js_types.instance_t Js.readonly_prop
+  method _DOMMatrixReadOnly : Class_definitions.dom_matrix_read_only Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _DOMMatrixReadOnly_constructor :
+    (init:float_array_or_string Js.t Js.optdef -> Interfaces.dom_matrix_read_only Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _DOMMatrixReadOnly_t :
+    Interfaces.dom_matrix_read_only Browser_js_types.instance_t Js.readonly_prop
 
   method _DOMRect : Class_definitions.dom_rect Js.t Js.prop
 
@@ -1158,17 +1660,110 @@ class type window = object
   method _FocusEvent_t :
     Interfaces.focus_event Browser_js_types.instance_t Js.readonly_prop
 
+  method _FontFace : Class_definitions.font_face Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _FontFace_constructor :
+    (family:cssom_string Js.t
+     -> source:binary_data_or_cssom_string Js.t
+     -> descriptors:Interfaces.font_face_descriptors Js.t Js.optdef
+     -> Interfaces.font_face Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _FontFace_t : Interfaces.font_face Browser_js_types.instance_t Js.readonly_prop
+
+  method _FontFaceSet_t :
+    Interfaces.font_face_set Browser_js_types.instance_t Js.readonly_prop
+
   method _FormData : Class_definitions.form_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _FormData_constructor :
-    (form:(* unresolved HTMLFormElement *) untranslated Js.optdef
+    (form:Interfaces.html_form_element Js.t Js.optdef
      -> submitter:Interfaces.html_element Js.t Js.opt Js.optdef
      -> Interfaces.form_data Js.t)
       Js.constr
       Js.readonly_prop
 
   method _FormData_t : Interfaces.form_data Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_GPU] is unsafe and is only available in [Secure] contexts. In order to typecast to
+      [_GPU], you must use [ppx_browser]. *)
+  method _GPU_t :
+    ( Interfaces.gpu Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUAdapter] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUAdapter], you must use [ppx_browser]. *)
+  method _GPUAdapter_t :
+    ( Interfaces.gpu_adapter Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCanvasContext] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCanvasContext], you must use [ppx_browser]. *)
+  method _GPUCanvasContext_t :
+    ( Interfaces.gpu_canvas_context Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandBuffer] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandBuffer], you must use [ppx_browser]. *)
+  method _GPUCommandBuffer_t :
+    ( Interfaces.gpu_command_buffer Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUCommandEncoder] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_GPUCommandEncoder], you must use [ppx_browser]. *)
+  method _GPUCommandEncoder_t :
+    ( Interfaces.gpu_command_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUDevice] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUDevice], you must use [ppx_browser]. *)
+  method _GPUDevice_t :
+    ( Interfaces.gpu_device Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQuerySet] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQuerySet], you must use [ppx_browser]. *)
+  method _GPUQuerySet_t :
+    ( Interfaces.gpu_query_set Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUQueue] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUQueue], you must use [ppx_browser]. *)
+  method _GPUQueue_t :
+    ( Interfaces.gpu_queue Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPURenderPassEncoder] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_GPURenderPassEncoder], you must use [ppx_browser]. *)
+  method _GPURenderPassEncoder_t :
+    ( Interfaces.gpu_render_pass_encoder Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTexture] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTexture], you must use [ppx_browser]. *)
+  method _GPUTexture_t :
+    ( Interfaces.gpu_texture Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_GPUTextureView] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_GPUTextureView], you must use [ppx_browser]. *)
+  method _GPUTextureView_t :
+    ( Interfaces.gpu_texture_view Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method _Geolocation_t :
     Interfaces.geolocation Browser_js_types.instance_t Js.readonly_prop
@@ -1203,20 +1798,32 @@ class type window = object
   method _HTMLElement_t :
     Interfaces.html_element Browser_js_types.instance_t Js.readonly_prop
 
+  method _HTMLFormElement_t :
+    Interfaces.html_form_element Browser_js_types.instance_t Js.readonly_prop
+
   method _HTMLIFrameElement_t :
     Interfaces.html_iframe_element Browser_js_types.instance_t Js.readonly_prop
 
   method _HTMLImageElement : Class_definitions.html_image_element Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
-  method _HTMLImageElement_constructor :
-    Interfaces.html_image_element Js.t Js.constr Js.readonly_prop
+  method _Image_constructor :
+    (width:Js.number Js.t Js.optdef
+     -> height:Js.number Js.t Js.optdef
+     -> Interfaces.html_image_element Js.t)
+      Js.constr
+      Js.readonly_prop
 
   method _HTMLImageElement_t :
     Interfaces.html_image_element Browser_js_types.instance_t Js.readonly_prop
 
   method _HTMLInputElement_t :
     Interfaces.html_input_element Browser_js_types.instance_t Js.readonly_prop
+
+  method _HTMLMediaElement : Class_definitions.html_media_element Js.t Js.prop
+
+  method _HTMLMediaElement_t :
+    Interfaces.html_media_element Browser_js_types.instance_t Js.readonly_prop
 
   method _HTMLMetaElement_t :
     Interfaces.html_meta_element Browser_js_types.instance_t Js.readonly_prop
@@ -1226,6 +1833,9 @@ class type window = object
 
   method _HTMLTextAreaElement_t :
     Interfaces.html_text_area_element Browser_js_types.instance_t Js.readonly_prop
+
+  method _HTMLVideoElement_t :
+    Interfaces.html_video_element Browser_js_types.instance_t Js.readonly_prop
 
   method _HashChangeEvent : Class_definitions.hash_change_event Js.t Js.prop
 
@@ -1263,6 +1873,13 @@ class type window = object
     Interfaces.highlight_registry Browser_js_types.instance_t Js.readonly_prop
 
   method _History_t : Interfaces.history Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmap_t :
+    Interfaces.image_bitmap Browser_js_types.instance_t Js.readonly_prop
+
+  method _ImageBitmapRenderingContext_t :
+    Interfaces.image_bitmap_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
   method _ImageData : Class_definitions.image_data Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -1282,7 +1899,7 @@ class type window = object
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
   method _ImageData_constructor2 :
-    (data:(* Uint8ClampedArray *) untranslated
+    (data:Browser_js_types.Uint8_clamped_array.t Js.t
      -> sw:Js.number Js.t
      -> sh:Js.number Js.t Js.optdef
      -> settings:Interfaces.image_data_settings Js.t Js.optdef
@@ -1358,6 +1975,13 @@ class type window = object
   method _IntersectionObserverEntry_t :
     Interfaces.intersection_observer_entry Browser_js_types.instance_t Js.readonly_prop
 
+  (** [_Keyboard] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_Keyboard], you must use [ppx_browser]. *)
+  method _Keyboard_t :
+    ( Interfaces.keyboard Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _KeyboardEvent : Class_definitions.keyboard_event Js.t Js.prop
 
   (** Constructors must be bound to an identifier before being called with [new%js] *)
@@ -1371,7 +1995,21 @@ class type window = object
   method _KeyboardEvent_t :
     Interfaces.keyboard_event Browser_js_types.instance_t Js.readonly_prop
 
+  (** [_KeyboardLayoutMap] is unsafe and is only available in [Secure] contexts. In order
+      to typecast to [_KeyboardLayoutMap], you must use [ppx_browser]. *)
+  method _KeyboardLayoutMap_t :
+    ( Interfaces.keyboard_layout_map Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
   method _Location_t : Interfaces.location Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_MediaDevices] is unsafe and is only available in [Secure] contexts. In order to
+      typecast to [_MediaDevices], you must use [ppx_browser]. *)
+  method _MediaDevices_t :
+    ( Interfaces.media_devices Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method _MediaQueryList_t :
     Interfaces.media_query_list Browser_js_types.instance_t Js.readonly_prop
@@ -1384,6 +2022,33 @@ class type window = object
 
   method _MediaSource_t :
     Interfaces.media_source Browser_js_types.instance_t Js.readonly_prop
+
+  method _MediaSourceHandle_t :
+    Interfaces.media_source_handle Browser_js_types.instance_t Js.readonly_prop
+
+  method _MediaStream : Class_definitions.media_stream Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _MediaStream_constructor :
+    Interfaces.media_stream Js.t Js.constr Js.readonly_prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _MediaStream_constructor1 :
+    (stream:Interfaces.media_stream Js.t -> Interfaces.media_stream Js.t) Js.constr
+      Js.readonly_prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _MediaStream_constructor2 :
+    (tracks:Interfaces.media_stream_track Js.t Js.js_array Js.t
+     -> Interfaces.media_stream Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _MediaStream_t :
+    Interfaces.media_stream Browser_js_types.instance_t Js.readonly_prop
+
+  method _MediaStreamTrack_t :
+    Interfaces.media_stream_track Browser_js_types.instance_t Js.readonly_prop
 
   method _MessageEvent : Class_definitions.message_event Js.t Js.prop
 
@@ -1462,6 +2127,32 @@ class type window = object
     Interfaces.node_iterator Browser_js_types.instance_t Js.readonly_prop
 
   method _NodeList_t : Interfaces.node_list Browser_js_types.instance_t Js.readonly_prop
+  method _OffscreenCanvas : Class_definitions.offscreen_canvas Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _OffscreenCanvas_constructor :
+    (width:Js.number Js.t -> height:Js.number Js.t -> Interfaces.offscreen_canvas Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _OffscreenCanvas_t :
+    Interfaces.offscreen_canvas Browser_js_types.instance_t Js.readonly_prop
+
+  method _OffscreenCanvasRenderingContext2D_t :
+    Interfaces.offscreen_canvas_rendering_context2d Browser_js_types.instance_t
+      Js.readonly_prop
+
+  method _Path2D : Class_definitions.path2d Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _Path2D_constructor :
+    (path:path2d_or_string Js.t Js.optdef -> Interfaces.path2d Js.t) Js.constr
+      Js.readonly_prop
+
+  method _Path2D_t : Interfaces.path2d Browser_js_types.instance_t Js.readonly_prop
+
+  method _Performance_t :
+    Interfaces.performance Browser_js_types.instance_t Js.readonly_prop
 
   method _PerformanceEntry_t :
     Interfaces.performance_entry Browser_js_types.instance_t Js.readonly_prop
@@ -1483,6 +2174,12 @@ class type window = object
 
   method _PerformanceObserver_t :
     Interfaces.performance_observer Browser_js_types.instance_t Js.readonly_prop
+
+  method _PermissionStatus_t :
+    Interfaces.permission_status Browser_js_types.instance_t Js.readonly_prop
+
+  method _Permissions_t :
+    Interfaces.permissions Browser_js_types.instance_t Js.readonly_prop
 
   method _PointerEvent : Class_definitions.pointer_event Js.t Js.prop
 
@@ -1522,6 +2219,21 @@ class type window = object
 
   method _ProgressEvent_t :
     Interfaces.progress_event Browser_js_types.instance_t Js.readonly_prop
+
+  (** [_PublicKeyCredential] is unsafe and is only available in [Secure] contexts. In
+      order to construct [_PublicKeyCredential] or interact with any of its static
+      members, you must use [ppx_browser]. *)
+  method _PublicKeyCredential :
+    ( Class_definitions.public_key_credential Js.t Js.prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
+
+  (** [_PublicKeyCredential] is unsafe and is only available in [Secure] contexts. In
+      order to typecast to [_PublicKeyCredential], you must use [ppx_browser]. *)
+  method _PublicKeyCredential_t :
+    ( Interfaces.public_key_credential Browser_js_types.instance_t Js.readonly_prop
+      , [ `Secure | `Cross_origin_isolated ] )
+      Browser_js_types.unsafe
 
   method _RadioNodeList_t :
     Interfaces.radio_node_list Browser_js_types.instance_t Js.readonly_prop
@@ -1590,6 +2302,19 @@ class type window = object
       Js.readonly_prop
 
   method _Response_t : Interfaces.response Browser_js_types.instance_t Js.readonly_prop
+
+  method _SVGAnimatedString_t :
+    Interfaces.svg_animated_string Browser_js_types.instance_t Js.readonly_prop
+
+  method _SVGElement_t :
+    Interfaces.svg_element Browser_js_types.instance_t Js.readonly_prop
+
+  method _SVGGraphicsElement_t :
+    Interfaces.svg_graphics_element Browser_js_types.instance_t Js.readonly_prop
+
+  method _SVGImageElement_t :
+    Interfaces.svg_image_element Browser_js_types.instance_t Js.readonly_prop
+
   method _Screen_t : Interfaces.screen Browser_js_types.instance_t Js.readonly_prop
   method _Selection_t : Interfaces.selection Browser_js_types.instance_t Js.readonly_prop
   method _Storage_t : Interfaces.storage Browser_js_types.instance_t Js.readonly_prop
@@ -1721,6 +2446,53 @@ class type window = object
 
   method _URLSearchParams_t :
     Interfaces.url_search_params Browser_js_types.instance_t Js.readonly_prop
+
+  method _VideoFrame : Class_definitions.video_frame Js.t Js.prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _VideoFrame_constructor :
+    (source:canvas_image_source Js.t
+     -> init:Interfaces.video_frame_init Js.t Js.optdef
+     -> Interfaces.video_frame Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  (** Constructors must be bound to an identifier before being called with [new%js] *)
+  method _VideoFrame_constructor1 :
+    (data:allow_shared_buffer_source Js.t
+     -> init:Interfaces.video_frame_buffer_init Js.t
+     -> Interfaces.video_frame Js.t)
+      Js.constr
+      Js.readonly_prop
+
+  method _VideoFrame_t :
+    Interfaces.video_frame Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGL2RenderingContext :
+    Class_definitions.web_gl2_rendering_context Js.t Js.prop
+
+  method _WebGL2RenderingContext_t :
+    Interfaces.web_gl2_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLBuffer_t :
+    Interfaces.web_gl_buffer Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLObject_t :
+    Interfaces.web_gl_object Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLProgram_t :
+    Interfaces.web_gl_program Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLRenderingContext : Class_definitions.web_gl_rendering_context Js.t Js.prop
+
+  method _WebGLRenderingContext_t :
+    Interfaces.web_gl_rendering_context Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLShader_t :
+    Interfaces.web_gl_shader Browser_js_types.instance_t Js.readonly_prop
+
+  method _WebGLUniformLocation_t :
+    Interfaces.web_gl_uniform_location Browser_js_types.instance_t Js.readonly_prop
 
   method _WebSocket : Class_definitions.web_socket Js.t Js.prop
 

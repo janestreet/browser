@@ -100,9 +100,21 @@ end
 
 type 'a frozen_array = 'a array
 type 'value record
+
+module Uint8_clamped_array : sig
+  type t
+  type bigarray = (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Genarray.t
+
+  (** Returns a bigarray view of the clamped array. *)
+  val to_bigarray : t Js.t -> bigarray
+end
+
 type untranslated
-type 'a js_promise
+type +'a js_promise
 type event_id
+
+(** [Js_of_ocaml.Promise.t] is already a [Js.t], but it's not exposed in the [mli] *)
+external of_jsoo_promise : 'a Js_of_ocaml.Promise.t -> 'a js_promise Js.t = "%identity"
 
 (** [instance_t] is used for [instanceof]. The ['a] represents the type of the instance of
     the class that is created whenever you call the constructor of this class

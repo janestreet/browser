@@ -85,12 +85,3 @@ module Js_array : sig
   (** Convert OCaml array to JavaScript array with element mapping *)
   val of_array_map_elements : 'a array -> f:('a -> 'b) -> 'b Js.js_array Js.t
 end
-
-(** JavaScript Promise utilities *)
-module Js_promise : sig
-  (** Convert JavaScript promise to Promise_jsoo promise *)
-  val to_promise_jsoo : 'a js_promise Js.t -> 'a Promise.t
-
-  (** Convert Promise_jsoo promise to JavaScript promise *)
-  val of_promise_jsoo : 'a Promise.t -> 'a js_promise Js.t
-end

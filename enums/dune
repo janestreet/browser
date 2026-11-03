@@ -1,0 +1,80 @@
+(library
+ (name browser_enums)
+ (public_name browser.enums)
+ (libraries browser_js_types browser_types private_browser_bindings_shared)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(rule
+ (deps alpha_option.ml binary_type.ml css_numeric_base_type.ml
+   can_play_type_result.ml canvas_direction.ml canvas_fill_rule.ml
+   canvas_font_kerning.ml canvas_font_stretch.ml canvas_font_variant_caps.ml
+   canvas_power_preference.ml canvas_text_align.ml canvas_text_baseline.ml
+   canvas_text_rendering.ml canvas_will_read_frequently.ml
+   color_space_conversion.ml credential_mediation_requirement.ml
+   display_media_include_or_exclude.ml document_ready_state.ml
+   end_of_stream_error.ml ending_type.ml fetch_priority.ml
+   font_face_load_status.ml font_face_set_load_status.ml
+   fullscreen_navigation_ui.ml gpu_canvas_alpha_mode.ml
+   gpu_canvas_tone_mapping_mode.ml gpu_error_filter.ml gpu_feature_name.ml
+   gpu_load_op.ml gpu_power_preference.ml gpu_query_type.ml gpu_store_op.ml
+   gpu_texture_aspect.ml gpu_texture_dimension.ml gpu_texture_format.ml
+   gpu_texture_view_dimension.ml highlight_type.ml
+   identity_credential_request_options_context.ml
+   identity_credential_request_options_mode.ml image_orientation.ml
+   image_smoothing_quality.ml media_keys_requirement.ml
+   media_stream_track_state.ml navigation_commit_behavior.ml
+   navigation_focus_reset.ml navigation_history_behavior.ml
+   navigation_scroll_behavior.ml navigation_type.ml
+   offscreen_rendering_context_type.ml permission_state.ml
+   predefined_color_space.ml premultiply_alpha.ml referrer_policy.ml
+   request_cache.ml request_credentials.ml request_destination.ml
+   request_duplex.ml request_mode.ml request_redirect.ml
+   resize_observer_box_options.ml resize_quality.ml response_type.ml
+   scroll_behavior.ml scroll_logical_position.ml scroll_restoration.ml
+   selection_mode.ml video_color_primaries.ml video_matrix_coefficients.ml
+   video_pixel_format.ml video_transfer_characteristics.ml
+   visibility_state.ml web_gl_power_preference.ml worker_type.ml
+   xml_http_request_response_type.ml %{workspace_root}/bin/apply-style
+   %{workspace_root}/lib/browser/bin/main.exe)
+ (action
+  (bash
+    "%{workspace_root}/lib/browser/bin/main.exe gen-enums -file-type ml -filtered"))
+ (alias runtest))
+
+(rule
+ (deps alpha_option.mli binary_type.mli css_numeric_base_type.mli
+   can_play_type_result.mli canvas_direction.mli canvas_fill_rule.mli
+   canvas_font_kerning.mli canvas_font_stretch.mli
+   canvas_font_variant_caps.mli canvas_power_preference.mli
+   canvas_text_align.mli canvas_text_baseline.mli canvas_text_rendering.mli
+   canvas_will_read_frequently.mli color_space_conversion.mli
+   credential_mediation_requirement.mli display_media_include_or_exclude.mli
+   document_ready_state.mli end_of_stream_error.mli ending_type.mli
+   fetch_priority.mli font_face_load_status.mli font_face_set_load_status.mli
+   fullscreen_navigation_ui.mli gpu_canvas_alpha_mode.mli
+   gpu_canvas_tone_mapping_mode.mli gpu_error_filter.mli gpu_feature_name.mli
+   gpu_load_op.mli gpu_power_preference.mli gpu_query_type.mli
+   gpu_store_op.mli gpu_texture_aspect.mli gpu_texture_dimension.mli
+   gpu_texture_format.mli gpu_texture_view_dimension.mli highlight_type.mli
+   identity_credential_request_options_context.mli
+   identity_credential_request_options_mode.mli image_orientation.mli
+   image_smoothing_quality.mli media_keys_requirement.mli
+   media_stream_track_state.mli navigation_commit_behavior.mli
+   navigation_focus_reset.mli navigation_history_behavior.mli
+   navigation_scroll_behavior.mli navigation_type.mli
+   offscreen_rendering_context_type.mli permission_state.mli
+   predefined_color_space.mli premultiply_alpha.mli referrer_policy.mli
+   request_cache.mli request_credentials.mli request_destination.mli
+   request_duplex.mli request_mode.mli request_redirect.mli
+   resize_observer_box_options.mli resize_quality.mli response_type.mli
+   scroll_behavior.mli scroll_logical_position.mli scroll_restoration.mli
+   selection_mode.mli video_color_primaries.mli video_matrix_coefficients.mli
+   video_pixel_format.mli video_transfer_characteristics.mli
+   visibility_state.mli web_gl_power_preference.mli worker_type.mli
+   xml_http_request_response_type.mli %{workspace_root}/bin/apply-style
+   %{workspace_root}/lib/browser/bin/main.exe)
+ (action
+  (bash
+    "%{workspace_root}/lib/browser/bin/main.exe gen-enums -file-type mli -filtered"))
+ (alias runtest))

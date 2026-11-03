@@ -95,10 +95,25 @@ end
 
 type 'a frozen_array = 'a array
 type 'value record
+
+module Uint8_clamped_array = struct
+  (* [Uint8ClampedArray] and [Uint8Array] are distinct JavaScript classes, but are
+     indistinguishable in their representations through
+     [Js_of_ocaml.Typed_array.typedArray]. We expose [t] as abstract to avoid the two
+     types from being mixed up outside this module. *)
+  type t = Js_of_ocaml.Typed_array.uint8Array
+  type bigarray = (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Genarray.t
+
+  let to_bigarray = Js_of_ocaml.Typed_array.to_genarray
+end
+
 type untranslated
-type 'a js_promise
+type +'a js_promise
 type event_id = unit -> unit
 type +'a instance_t
+
+(** [Js_of_ocaml.Promise.t] is already a [Js.t], but it's not exposed in the [mli] *)
+external of_jsoo_promise : 'a Js_of_ocaml.Promise.t -> 'a js_promise Js.t = "%identity"
 
 let to_event_id f = f
 let remove_event_listener id = id ()

@@ -1,5 +1,4 @@
 (* lib/webidl/bindings/high_level/core_utils.ml *)
-open Gen_js_api
 open Browser_js_types
 include Constants
 
@@ -94,17 +93,5 @@ module Js_array = struct
     let js_arr = new%js Js.array_length (Array.length arr) in
     Array.iteri (fun i element -> set js_arr i element) arr;
     js_arr
-  ;;
-end
-
-module Js_promise = struct
-  let to_promise_jsoo (type a) (promise : a js_promise Js.t) : a Promise.t =
-    let ojs = (Obj.magic : a js_promise Js.t -> Ojs.t) promise in
-    Promise.t_of_js (Obj.magic : Ojs.t -> a) ojs
-  ;;
-
-  let of_promise_jsoo (type a) (promise : a Promise.t) : a js_promise Js.t =
-    let ojs = Promise.t_to_js (Obj.magic : a -> Ojs.t) promise in
-    (Obj.magic : Ojs.t -> a js_promise Js.t) ojs
   ;;
 end

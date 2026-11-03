@@ -234,11 +234,24 @@ let of_jsoo_media_event (event : Dom_html.mediaEvent Js.t) =
 
 (* Message Event *)
 let to_jsoo_message_event (event : message_event Js.t) =
-  let event : Dom_html.messageEvent Js.t = Js.Unsafe.coerce event in
+  let event : (Js.Unsafe.top, Js.Unsafe.any Js.opt) Dom_html.messageEvent Js.t =
+    Js.Unsafe.coerce event
+  in
   event
 ;;
 
-let of_jsoo_message_event (event : Dom_html.messageEvent Js.t) =
+let of_jsoo_message_event
+  (event : (Js.Unsafe.top, Js.Unsafe.any Js.opt) Dom_html.messageEvent Js.t)
+  =
   let event : message_event Js.t = Js.Unsafe.coerce event in
   event
+;;
+
+(* HTML element direct conversion *)
+let to_dom_html_element (element : html_element Js.t) : Dom_html.element Js.t =
+  Js.Unsafe.coerce element
+;;
+
+let of_dom_html_element (element : Dom_html.element Js.t) : html_element Js.t =
+  Js.Unsafe.coerce element
 ;;
