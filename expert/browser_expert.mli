@@ -7,6 +7,7 @@ module Record = Record
 module Int64 = Int64
 module Context = Browser_manually_written_bindings.Context
 module Unsafe = Browser_manually_written_bindings.Unsafe
+module Keyboard_code = Browser_manually_written_bindings.Keyboard_code
 include module type of Generated
 
 (** Check if a JavaScript value is a 64-bit integer *)

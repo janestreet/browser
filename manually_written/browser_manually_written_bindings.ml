@@ -1,3 +1,5 @@
+module Keyboard_code = Keyboard_code
+
 module Unsafe = struct
   module Error = struct
     type t = Not_in_correct_context

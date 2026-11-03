@@ -31,3 +31,7 @@ module Unsafe_context_checker : sig
   val make : (module S_input) -> t
   val check : context:'a Context.t -> t -> bool
 end
+
+(** [Keyboard_code] exposes [Js_of_ocaml.Dom_html.Keyboard_code] but for [Browser_types]
+    types *)
+module Keyboard_code = Keyboard_code

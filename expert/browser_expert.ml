@@ -5,6 +5,7 @@ module Record = Record
 module Int64 = Int64
 module Context = Context
 module Unsafe = Browser_manually_written_bindings.Unsafe
+module Keyboard_code = Browser_manually_written_bindings.Keyboard_code
 include Generated
 
 let is_typeof = Private_browser_bindings_shared.Type_checking_utils.is_typeof
